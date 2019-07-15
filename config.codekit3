@@ -36,6 +36,17 @@
 		"rFN": 0,
 		"uCM": 0
 		},
+	"/scripts/index-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/scripts/index-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"/scripts/index.js": {
 		"bF": 0,
 		"ft": 64,
@@ -43,6 +54,28 @@
 		"mi": 1,
 		"oA": 0,
 		"oAP": "/scripts/index-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/scripts/radio-min.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/scripts/radio-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
+	"/scripts/radio.js": {
+		"bF": 0,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/scripts/radio-min.js",
 		"oF": 0,
 		"sC": 3,
 		"tS": 0
@@ -70,6 +103,30 @@
 		"oA": 1,
 		"oAP": "/slider_version/question-03.html",
 		"oF": 1
+		},
+	"/slider_version/question-04a.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/slider_version/question-04a.html",
+		"oF": 0
+		},
+	"/slider_version/question-04b.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/slider_version/question-04b.html",
+		"oF": 0
+		},
+	"/slider_version/question-05.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/slider_version/question-05.html",
+		"oF": 0
 		},
 	"/slider_version/recommendation.html": {
 		"cB": 0,

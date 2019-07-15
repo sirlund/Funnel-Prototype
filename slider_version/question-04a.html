@@ -16,35 +16,9 @@
 
 				</header>
 				<div class="InnerContainer">
-					<form class="Question" id="goto" action="">
-						<label class="Question__label" for="name">¿Cómo es tu grupo familiar?</label>
-						<ul class="RadioButtonList">
-							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
-								<label for="a25">Soltero/a</label>
-							</li>
-							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
-								<label for="a50">En pareja</label>
-							</li>
-							<li>
-								<input type="radio" value="haskids" name="kidsinfo" />
-								<label for="a75">Soltero/a con hijos</label>
-							</li>
-							<li>
-								<input type="radio" value="haskids" name="kidsinfo" />
-								<label for="a100">En pareja con hijos</label>
-							</li>
-							<!--
-							<li>
-								<input type="radio" id="other" name="amount" />
-								<label for="other">other</label>
-							</li>
-							<li>
-								<input type="text" id="otherAmount" name="numAmount" />
-							</li>
-							-->
-							</ul>
+					<form class="Question" action="question-05.html">
+						<label class="Question__label" for="name">¿Cuántos hijos tienes?</label>
+						<input class="Question__input" type="number" placeholder="">
 						<div class="Question__button">
 							<button class="Button" type="submit">Siguiente</button>
 						</div>
@@ -54,6 +28,5 @@
 		</div>
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="../scripts/radio.js"></script>
 	</body>
 </html>
