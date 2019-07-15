@@ -74,25 +74,41 @@ header {
 
 .Total {
   margin: 1.5rem 0 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: #262626; }
   .Total h5 {
     font-weight: light;
     font-size: .8em;
     opacity: .7; }
   .Total h1 {
-    font-size: 2em;
+    font-size: 1.75em;
     margin: .125em 0; }
 
 .Slider {
-  margin: 1rem 0;
+  margin: 0;
   width: 100%; }
+
+.slick-list {
+  padding: 0 7%;
+  width: 100%; }
+
+@media (min-width: 340px) {
+  .slick-list {
+    padding: 0 9%; } }
+
+@media (min-width: 360px) {
+  .slick-list {
+    padding: 0 11%; } }
+
+.slick-slide {
+  margin: 0 .75rem;
+  height: auto; }
 
 .Card {
   position: relative;
   outline: 0;
   border: 0.125rem solid #2ba4f9;
-  padding: 2rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem;
   border-radius: .5rem;
   margin: 3rem 0 0;
   width: 100%;
@@ -130,7 +146,7 @@ header {
 .Button {
   border: none;
   background: #2ba4f9;
-  padding: 0.75em 2em 0.75em;
+  padding: 0.75em 1.5em;
   height: 3rem;
   text-decoration: none;
   border-radius: 1.5rem;
@@ -172,18 +188,6 @@ header {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
           flex: 0 0 auto; }
-
-.slick-list {
-  padding: 0 8%;
-  width: 100%; }
-
-@media (min-width: 360px) {
-  .slick-list {
-    padding: 0 12%; } }
-
-.slick-slide {
-  margin: 0 .75rem;
-  height: auto; }
 
 .slick-dots {
   list-style: none;
