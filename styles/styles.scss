@@ -1,0 +1,271 @@
+//colors
+$blue: #2ba4f9;
+$grey: #4a4a4a;
+$grey-light: #a2a2a2;
+$black: #262626;
+$tag-height: 3rem;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,body {
+	height: 100%;
+	min-height: auto;
+}
+
+body {
+	background: white;
+	font-family: "Lato", sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	color: $black;
+}
+
+h1 {
+	margin: 1rem auto;
+}
+
+header {
+	background: $black;
+	padding: 1rem;
+	height: 3.5rem;
+	width: 100%;
+	flex: 0 0 auto;
+}
+
+.Container {
+	text-align: center;
+	width: 100vw;
+	height: 100vh;
+}
+
+.View {
+	background-color: white;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: Column;
+	align-items: center;
+	justify-content: space-between;
+	overflow: hidden;
+}
+.InnerContainer {
+	width: 100%;
+	max-width: 480px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: Column;
+	align-items: stretch;
+	justify-content: flex-start;
+	flex: 1 1 auto;
+	overflow: auto;
+}
+
+.Total {
+	margin: 1.5rem 0 0;
+	font-size: 1.25rem;
+	color: $black;
+	h5 {
+		font-weight: light;
+		font-size: .8em;
+		opacity: .7;
+	}
+	h1 {
+		font-size: 2em;
+		margin: .125em 0;
+	}
+}
+
+.Slider {
+	margin: 1rem 0;
+	width: 100%;
+	//min-height: calc(320px + 2.8rem);
+}
+
+.Card {
+	position: relative;
+	outline: 0;
+	border: .125rem solid $blue;
+	padding: 2rem 1.5rem 1.5rem;
+	border-radius: .5rem;
+	margin: 3rem 0 0;
+	//min-height: 20rem;
+	width: 100%;
+	transition: all 180ms ease;
+	filter: grayscale(100%);
+	opacity: .4;
+	.slick-current & {
+		filter: grayscale(0%);
+		opacity: 1;
+	}
+}
+.Card__tag {
+	color: $grey-light;
+	position: absolute;
+	width: 100%;
+	top: -3rem;
+	left: 0;
+	font-size: 16px;
+	line-height: 3rem;
+	.slick-current & {
+		color: $blue;
+	}
+}
+
+
+.Card__desc {
+	width: 100%;
+	img {
+		width: 100%;
+		margin: 0 auto;
+		height: auto;
+	}
+}
+
+.Card__footer {
+	margin: 1rem 0 0;
+}
+
+.Button {
+	border: none;
+	background: $blue;
+	padding: 0.75em 2em 0.75em;
+	height: 3rem;
+	text-decoration: none;
+	border-radius: 1.5rem;
+	display: inline-flex;
+	color: white;
+	font-size: 1rem;
+	align-items: center;
+	justify-content: center;
+	//transition: all 180ms ease;
+	&--disabled {
+		background: $grey-light;
+		
+	}
+}
+.ButtonList {
+	display: flex;
+	flex-direction: Column;
+	align-items: stretch;
+	justify-content: flex-start;
+	width: 100%;
+	.Button {
+		margin: .5rem 0;
+	}
+}
+
+.BottomNav {
+	padding: 1rem;
+	width: 100%;
+	flex: 0 0 auto;
+	//margin-top: auto;
+}
+
+.slick-list {
+	padding: 0 8%;
+	width: 100%;
+}
+@media (min-width: 360px) {
+	.slick-list {
+		padding: 0 12%;
+	}
+}
+
+.slick-slide {
+	margin: 0 .75rem;
+	height: auto;
+}
+
+.slick-dots {
+	list-style: none;
+	margin: 1rem 0 0;
+}
+.slick-dots li {
+	display: inline-block;
+	margin: 0 .5em;
+}
+.slick-dots span {
+	display: block;
+	background-color: $grey-light;
+	height: 0.75em;
+	width: 0.75em;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.slick-dots .slick-active span {
+	background: $blue;
+}
+
+
+.Question {
+	width: 100%;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+	&__label {
+		font-size: 1.375rem;
+		font-weight: bold;
+		line-height: 1.5;
+		margin: 0 0 1rem;
+	}
+	&__input {
+		border: 2px solid $grey-light;
+		border-radius: 4px;
+		font-size: 1.25rem;
+		padding: 1rem 1.5rem;
+		width: 100%;
+	}
+	&__button {
+		margin: 1rem 0 0;
+	}
+}
+
+.RadioButtonList {
+	list-style-type: none;
+	margin: 1rem 0 0;
+	padding: 0;
+	width: 100%;
+	li {
+		margin:.5rem 0;
+		width: 100%;
+		height: 3rem;
+		position:relative;
+	}
+	label, input {
+		display:block;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+	}
+	input[type="radio"] {
+		opacity:0.011;
+		z-index:100;
+	}
+	input[type="radio"]:checked + label {
+		background: $blue;
+		color: white;
+		border: none;
+	}
+	label {
+		padding: .5rem 1rem;
+		border: 2px solid $grey-light; 
+		cursor: pointer;
+		z-index: 90;
+		border-radius: .25rem;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	label:hover {
+		background:#DDD;
+	}
+}

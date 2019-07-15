@@ -1,0 +1,1 @@
+console.log("JavaScript is amazing!"),$('[data-element="carousel"]').slick({infinite:!1,slidesToShow:1,slidesToScroll:1,dots:!0,arrows:!1,customPaging:function(s,o){return"<span></span>"}});
