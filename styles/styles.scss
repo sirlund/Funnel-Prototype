@@ -84,7 +84,7 @@ header {
 	width: 100%;
 	//min-height: calc(320px + 2.8rem);
 }
-// Card width 
+// Card width
 .slick-list {
 	padding: 0 7%;
 	width: 100%;
@@ -164,7 +164,7 @@ header {
 	//transition: all 180ms ease;
 	&--disabled {
 		background: $grey-light;
-		
+
 	}
 }
 .ButtonList {
@@ -209,7 +209,7 @@ header {
 
 .Question {
 	width: 100%;
-	padding: 2rem;
+	padding: 8vw;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -218,7 +218,7 @@ header {
 	&__label {
 		font-size: 1.375rem;
 		font-weight: bold;
-		line-height: 1.5;
+		line-height: 1.3;
 		margin: 0 0 1rem;
 	}
 	&__input {
@@ -235,14 +235,16 @@ header {
 
 .RadioButtonList {
 	list-style-type: none;
-	margin: 1rem 0 0;
+	margin: 0;
 	padding: 0;
 	width: 100%;
 	li {
-		margin:.5rem 0;
 		width: 100%;
-		height: 3rem;
+		height: 4rem;
 		position:relative;
+		&:not(:first-child) {
+			margin: 2vw 0 0;
+		}
 	}
 	label, input {
 		display:block;
@@ -265,13 +267,25 @@ header {
 	}
 	label {
 		padding: .5rem 1rem;
-		border: 2px solid $grey-light; 
+		border: 2px solid $grey-light;
 		cursor: pointer;
 		z-index: 90;
 		border-radius: .25rem;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
+		font-size: .9em;
+		line-height: 1.2em;
+		&:before {
+			content: "";
+			display: block;
+			height: 2.125rem;
+			width: 2.125rem;
+			background: lighten($grey-light, 10%);
+			border-radius: 100%;
+			margin: 0 .5rem 0 -.25rem;
+			flex: 0 0 auto;
+		}
 	}
 	label:hover {
 		background:#DDD;
