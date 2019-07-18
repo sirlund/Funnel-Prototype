@@ -21,15 +21,15 @@
 						<label class="Question__label" for="name">¿Cómo describirías un día normal?</label>
 						<ul class="RadioButtonList">
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
 								<label for="a25">Ando todo el día en la calle, ya sea por trabajo o vida familiar</label>
 							</li>
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
 								<label for="a50">En mi oficina/casa trabajando o realizando tareas rutinarias</label>
 							</li>
 							<li>
-								<input type="radio" value="haskids" name="kidsinfo" />
+								<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
 								<label for="a75">Viajo mucho fuera de mi ciudad/país, trasladandome de un lugar a otro</label>
 							</li>
 							<!--
@@ -43,7 +43,7 @@
 							-->
 							</ul>
 						<div class="Question__button">
-							<button class="Button" type="submit">Siguiente</button>
+							<button id="sendButton" class="Button" type="submit">Siguiente</button>
 						</div>
 					</form>
 				</div>
@@ -51,5 +51,6 @@
 		</div>
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="../scripts/sendButton.js"></script>
 	</body>
 </html>

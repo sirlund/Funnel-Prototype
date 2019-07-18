@@ -21,15 +21,15 @@
 						<label class="Question__label" for="name">¿Qué esperas de un seguro de vida?</label>
 						<ul class="RadioButtonList">
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired" />
 								<label for="a25">Que me apoye ante enfermedades o invalidez si algo grave me llega a pasar</label>
 							</li>
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired" />
 								<label for="a50">Que apoye a mi familia económicamente si ya no estoy</label>
 							</li>
 							<li>
-								<input type="radio" value="haskids" name="kidsinfo" />
+								<input type="radio" value="haskids" name="kidsinfo" class="optionRequired" />
 								<label for="a75">Que me de protección en mi vida activa y nuevas aventuras/viajes</label>
 							</li>
 							<!--
@@ -43,7 +43,7 @@
 							-->
 							</ul>
 						<div class="Question__button">
-							<button class="Button" type="submit">Siguiente</button>
+							<button id="sendButton" class="Button" type="submit">Siguiente</button>
 						</div>
 					</form>
 				</div>
@@ -51,5 +51,6 @@
 		</div>
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="../scripts/sendButton.js"></script>
 	</body>
 </html>

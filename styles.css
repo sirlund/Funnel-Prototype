@@ -229,7 +229,11 @@ header {
     font-size: 1.375rem;
     font-weight: bold;
     line-height: 1.3;
-    margin: 0 0 1rem; }
+    margin: 0 0 .5rem; }
+  .Question span {
+    margin-bottom: .5rem;
+    line-height: 1.3;
+    font-size: 14px; }
   .Question__input {
     border: 2px solid #a2a2a2;
     border-radius: 4px;
@@ -296,3 +300,9 @@ header {
               flex: 0 0 auto; }
   .RadioButtonList label:hover {
     background: #DDD; }
+
+button:disabled,
+button[disabled] {
+  opacity: .5;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%); }

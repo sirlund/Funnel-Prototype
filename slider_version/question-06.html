@@ -21,15 +21,15 @@
 						<label class="Question__label" for="name">¿Dónde vives?</label>
 						<ul class="RadioButtonList">
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
 								<label for="a25">En mi propia casa</label>
 							</li>
 							<li>
-								<input type="radio" value="nokids" name="kidsinfo" />
+								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
 								<label for="a50">Arriendo casa o departamento</label>
 							</li>
 							<li>
-								<input type="radio" value="haskids" name="kidsinfo" />
+								<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
 								<label for="a75">En casa de mis padres o familiares</label>
 							</li>
 							<!--
@@ -43,7 +43,7 @@
 							-->
 							</ul>
 						<div class="Question__button">
-							<button class="Button" type="submit">Siguiente</button>
+							<button id="sendButton" class="Button" type="submit">Siguiente</button>
 						</div>
 					</form>
 				</div>
@@ -51,5 +51,6 @@
 		</div>
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="../scripts/sendButton.js"></script>
 	</body>
 </html>
