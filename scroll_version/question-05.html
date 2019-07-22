@@ -16,40 +16,42 @@
 
 				</header>
 				<div class="InnerContainer">
-					<form class="Question" id="goto" action="question-06.html">
-						<label class="Question__label" for="name">¿Cuánto gastas mensaualmente en tu hogar?</label>
-						<span>Considerando alimentación, arriendo, gastos comunes, etc.</span>
-						<ul class="RadioButtonList">
-							<li>
-								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
-								<label for="a25">Menos de $1.000.000</label>
-							</li>
-							<li>
-								<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
-								<label for="a50">Entre $1.000.000 y $2.000.000</label>
-							</li>
-							<li>
-								<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
-								<label for="a75">Entre $2.000.000 y $3.000.000</label>
-							</li>
-							<li>
-								<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
-								<label for="a100">Más de $3.000.000</label>
-							</li>
-							<!--
-							<li>
-								<input type="radio" id="other" name="amount" />
-								<label for="other">other</label>
-							</li>
-							<li>
-								<input type="text" id="otherAmount" name="numAmount" />
-							</li>
-							-->
-							</ul>
-						<div class="Question__button">
-							<button id="sendButton" class="Button" type="submit">Siguiente</button>
-						</div>
-					</form>
+					<div class="QuestionContainer">
+						<form class="Question" id="goto" action="question-06.html">
+							<label class="Question__label" for="name">¿Cuánto gastas mensaualmente en tu hogar?</label>
+							<span>Considerando alimentación, arriendo, gastos comunes, etc.</span>
+							<ul class="RadioButtonList">
+								<li>
+									<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
+									<label for="a25">Menos de $1.000.000</label>
+								</li>
+								<li>
+									<input type="radio" value="nokids" name="kidsinfo" class="optionRequired"/>
+									<label for="a50">Entre $1.000.000 y $2.000.000</label>
+								</li>
+								<li>
+									<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
+									<label for="a75">Entre $2.000.000 y $3.000.000</label>
+								</li>
+								<li>
+									<input type="radio" value="haskids" name="kidsinfo" class="optionRequired"/>
+									<label for="a100">Más de $3.000.000</label>
+								</li>
+								<!--
+								<li>
+									<input type="radio" id="other" name="amount" />
+									<label for="other">other</label>
+								</li>
+								<li>
+									<input type="text" id="otherAmount" name="numAmount" />
+								</li>
+								-->
+								</ul>
+							<div class="Question__button">
+								<button id="sendButton" class="Button" type="submit">Siguiente</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
