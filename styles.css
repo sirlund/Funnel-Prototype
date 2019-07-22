@@ -316,7 +316,7 @@ header {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
             justify-content: flex-start;
-    font-size: .9em;
+    font-size: 1em;
     line-height: 1.25em;
     -webkit-transition: all 200ms ease;
     transition: all 200ms ease; }
