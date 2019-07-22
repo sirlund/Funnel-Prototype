@@ -20,4 +20,12 @@ $(document).ready(function () {
     },
   });
 
+  $('.toggle-card').on('click', function(e) {
+    $('.Card--optional').toggleClass("hidden"); //you can list several class names 
+    $(this).text(function(i, text){
+      return text === "Ver opción básica" ? "Ocultar opción básica" : "Ver opción básica";
+    })
+    e.preventDefault();
+  });
+
 });

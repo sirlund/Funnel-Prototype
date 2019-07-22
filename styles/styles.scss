@@ -83,26 +83,29 @@ header {
 	margin: 0;
 	width: 100%;
 	//min-height: calc(320px + 2.8rem);
-}
-// Card width
-.slick-list {
-	padding: 0 7%;
-	width: 100%;
-}
-@media (min-width: 340px) {
-	.slick-list {
-		padding: 0 9%;
+	.Card {
+		filter: grayscale(100%);
+		opacity: .4;
 	}
 }
-@media (min-width: 360px) {
-	.slick-list {
-		padding: 0 11%;
+
+.CardsList {
+	padding: 0 1.5rem 1.5rem;
+	.Card {
+		padding: 1rem 1rem 0;
+		.Card__footer {
+			margin: .5rem 0 -1.5rem;
+		}
+		&:not(:first-of-type) {
+			margin-top: 4rem;
+		}
+		&:not(.featured) {
+			border-color: lighten($grey-light, 15%);
+			.Button {
+				background-color: $grey-light;
+			}
+		}
 	}
-}
-// Space between slides
-.slick-slide {
-	margin: 0 .75rem;
-	height: auto;
 }
 
 .Card {
@@ -115,13 +118,11 @@ header {
 	//min-height: 20rem;
 	width: 100%;
 	transition: all 180ms ease;
-	filter: grayscale(100%);
-	opacity: .4;
-	.slick-current & {
-		filter: grayscale(0%);
-		opacity: 1;
+	&.hidden {
+		display: none;
 	}
 }
+
 .Card__tag {
 	color: $grey-light;
 	position: absolute;
@@ -134,7 +135,6 @@ header {
 		color: $blue;
 	}
 }
-
 
 .Card__desc {
 	width: 100%;
@@ -166,6 +166,10 @@ header {
 		background: $grey-light;
 
 	}
+	&--text {
+		background-color: transparent;
+		color: lighten($grey-light, 0%);
+	}
 }
 .ButtonList {
 	display: flex;
@@ -182,30 +186,20 @@ header {
 	padding: 1rem;
 	width: 100%;
 	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	//margin-top: auto;
 }
 
-
-.slick-dots {
-	list-style: none;
-	margin: 1rem 0 0;
+.Message {
+	text-align: center;
+	padding: 2rem 3rem;
+	margin-top: 10vw;
+	p {
+		margin: 1.5rem 0;
+	}
 }
-.slick-dots li {
-	display: inline-block;
-	margin: 0 .5em;
-}
-.slick-dots span {
-	display: block;
-	background-color: $grey-light;
-	height: 0.75em;
-	width: 0.75em;
-	border-radius: 50%;
-	cursor: pointer;
-}
-.slick-dots .slick-active span {
-	background: $blue;
-}
-
 
 .Question {
 	width: 100%;
@@ -301,4 +295,51 @@ button:disabled,
 button[disabled] {
 	opacity: .5;
 	filter: grayscale(100%);
+}
+
+// Slick slider overrides
+
+// Control Card width
+.slick-list {
+	padding: 0 7%;
+	width: 100%;
+}
+@media (min-width: 340px) {
+	.slick-list {
+		padding: 0 9%;
+	}
+}
+@media (min-width: 360px) {
+	.slick-list {
+		padding: 0 11%;
+	}
+}
+// Space between slides
+.slick-slide {
+	margin: 0 .75rem;
+	height: auto;
+}
+
+.slick-current .Card {
+	filter: grayscale(0%);
+	opacity: 1;
+}
+.slick-dots {
+	list-style: none;
+	margin: 1rem 0 0;
+}
+.slick-dots li {
+	display: inline-block;
+	margin: 0 .5em;
+}
+.slick-dots span {
+	display: block;
+	background-color: $grey-light;
+	height: 0.75em;
+	width: 0.75em;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.slick-dots .slick-active span {
+	background: $blue;
 }
