@@ -164,9 +164,6 @@ header {
 	align-items: center;
 	justify-content: center;
 	//transition: all 180ms ease;
-	&--disabled {
-		background: lighten($grey-light, 50%);
-	}
 	&--text {
 		background-color: transparent;
 		color: lighten($grey-light, 0%);
