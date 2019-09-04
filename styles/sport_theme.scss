@@ -1,0 +1,30 @@
+@import "_variables.scss";
+
+.Button {
+  background-color: $cyan;
+}
+.Question__input:focus {
+  border-color: $cyan;
+}
+.RadioButtonList {
+  input[type="radio"]:checked + label {
+    background: $cyan;
+    &::before {
+      background: lighten($cyan, 20%);
+    }
+  }
+}
+
+.Card {
+  border-color: $cyan;
+}
+
+.Card__tag {
+	.slick-current & {
+		color: $cyan;
+	}
+}
+
+.slick-dots .slick-active span {
+	background: $cyan;
+}

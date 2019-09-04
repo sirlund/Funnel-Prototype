@@ -1,9 +1,4 @@
-//colors
-$blue: #2BA4F9;
-$grey: #4a4a4a;
-$grey-light: #a2a2a2;
-$black: #262626;
-$tag-height: 3rem;
+@import "_variables.scss";
 
 * {
 	margin: 0;
@@ -173,7 +168,7 @@ header {
 	transition: all 200ms ease;
 	//transition: all 180ms ease;
 	&--text {
-		background-color: transparent;
+		background-color: transparent !important;
 		color: lighten($grey-light, 0%);
 	}
 }

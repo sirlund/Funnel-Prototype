@@ -1,0 +1,19 @@
+.Button {
+  background-color: #19d1d0; }
+
+.Question__input:focus {
+  border-color: #19d1d0; }
+
+.RadioButtonList input[type="radio"]:checked + label {
+  background: #19d1d0; }
+  .RadioButtonList input[type="radio"]:checked + label::before {
+    background: #64ecec; }
+
+.Card {
+  border-color: #19d1d0; }
+
+.slick-current .Card__tag {
+  color: #19d1d0; }
+
+.slick-dots .slick-active span {
+  background: #19d1d0; }
