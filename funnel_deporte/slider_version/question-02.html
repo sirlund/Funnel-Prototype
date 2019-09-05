@@ -19,9 +19,9 @@
 				</header>
 				<div class="InnerContainer">
 					<div class="QuestionContainer">
-						<form class="Question" action="question-03.html">
-							<label class="Question__label" for="name">¿Cuántos años tienes?</label>
-							<input class="Question__input inputRequired" type="number" pattern="\d*" placeholder="Ingresa tu edad">
+						<form class="Question" method="GET" action="question-03.html">
+							<label class="Question__label" for="age">¿Cuántos años tienes?</label>
+							<input class="Question__input inputRequired" type="number" name="age" value="" pattern="\d*" placeholder="Ingresa tu edad">
 							<div class="Question__button">
 								<button id="sendButton" class="Button" type="submit">Siguiente</button>
 							</div>
