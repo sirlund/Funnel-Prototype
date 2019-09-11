@@ -251,11 +251,11 @@ header {
   align-items: stretch;
   justify-content: center;
   flex: 1 0 auto;
-  padding: 2rem 0 0; }
+  padding: 3rem 0 0; }
 
 .Question {
   width: 100%;
-  padding: 0 1.5rem 3rem;
+  padding: 0 1.5rem 4rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -283,15 +283,14 @@ header {
 
 .RadioButtonList {
   list-style-type: none;
-  margin: .75rem 0 0;
+  margin: 1rem 0 0;
   padding: 0;
   width: 100%; }
   .RadioButtonList + .Question__button {
     margin-top: 1.5rem; }
   .RadioButtonList h4 {
     margin: 1.5rem 0 0;
-    padding-bottom: .75rem;
-    border-bottom: 1px solid #c8c8c8; }
+    padding-bottom: .75rem; }
     .RadioButtonList h4:first-of-type {
       margin-top: 0; }
   .RadioButtonList li {
@@ -320,10 +319,11 @@ header {
   .RadioButtonList label {
     padding: .75rem 1.25rem;
     min-height: 3.5rem;
-    border: 2px solid #c8c8c8;
+    background-color: #e7e7e7;
+    color: #6a6a6a;
     cursor: pointer;
     z-index: 90;
-    border-radius: .375rem;
+    border-radius: .25rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
