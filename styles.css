@@ -307,14 +307,17 @@ header {
     bottom: 0;
     width: 100%;
     height: 100%; }
-  .RadioButtonList input[type="radio"] {
+  .RadioButtonList input[type="radio"],
+  .RadioButtonList input[type="checkbox"] {
     opacity: 0.011;
     z-index: 100; }
-  .RadioButtonList input[type="radio"]:checked + label {
+  .RadioButtonList input[type="radio"]:checked + label,
+  .RadioButtonList input[type="checkbox"]:checked + label {
     background: #2BA4F9;
     color: white;
     border-color: transparent; }
-    .RadioButtonList input[type="radio"]:checked + label::before {
+    .RadioButtonList input[type="radio"]:checked + label::before,
+    .RadioButtonList input[type="checkbox"]:checked + label::before {
       background: #8ecffc; }
   .RadioButtonList label {
     padding: .75rem 1.25rem;
@@ -332,6 +335,18 @@ header {
     transition: all 200ms ease; }
   .RadioButtonList label:hover {
     background: #DDD; }
+
+.RadioButtonList--horizontal {
+  display: flex; }
+  .RadioButtonList--horizontal li:not(:first-child) {
+    margin: 0 0 0 1vw; }
+  .RadioButtonList--horizontal label {
+    padding: 0;
+    border-radius: 100px;
+    min-height: 0;
+    width: 40px;
+    height: 40px;
+    justify-content: center; }
 
 button:disabled,
 button[disabled] {

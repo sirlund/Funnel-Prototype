@@ -4,9 +4,11 @@
 .Question__input:focus {
   border-color: #19d1d0; }
 
-.RadioButtonList input[type="radio"]:checked + label {
+.RadioButtonList input[type="radio"]:checked + label,
+.RadioButtonList input[type="checkbox"]:checked + label {
   background: #19d1d0; }
-  .RadioButtonList input[type="radio"]:checked + label::before {
+  .RadioButtonList input[type="radio"]:checked + label::before,
+  .RadioButtonList input[type="checkbox"]:checked + label::before {
     background: #64ecec; }
 
 .Card {
