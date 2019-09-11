@@ -19,21 +19,21 @@
 
 			var sport = getParameterByName('radioinfo');
 			var sport_emoji = sport;
-			if (sport == "Surf") {
-				sport_emoji = "🏄‍♂️";
-			} else if (sport == "Buceo") {
-				sport_emoji = "🥽";
-			} else if (sport == "Bodyboard") {
-				sport_emoji = "🏄‍♀️";
-			} else if (sport == "Ciclismo") {
-				sport_emoji = "🚴‍♂️";
-			} else if (sport == "Ski") {
-				sport_emoji = "⛷";
-			} else if (sport == "Motociclismo") {
-				sport_emoji = "🏍";
-			} else if (sport == "Fútbol") {
-				sport_emoji = "⚽️";
-			}
+			// if (sport == "Surf") {
+			// 	sport_emoji = "🏄‍♂️";
+			// } else if (sport == "Buceo") {
+			// 	sport_emoji = "🥽";
+			// } else if (sport == "Bodyboard") {
+			// 	sport_emoji = "🏄‍♀️";
+			// } else if (sport == "Ciclismo") {
+			// 	sport_emoji = "🚴‍♂️";
+			// } else if (sport == "Ski") {
+			// 	sport_emoji = "⛷";
+			// } else if (sport == "Motociclismo") {
+			// 	sport_emoji = "🏍";
+			// } else if (sport == "Fútbol") {
+			// 	sport_emoji = "⚽️";
+			// }
 
 			document.addEventListener("DOMContentLoaded", function(event) {
 				document.getElementsByClassName("sport")[0].innerHTML = sport_emoji;
@@ -52,7 +52,7 @@
 				<div class="InnerContainer">
 					<div class="QuestionContainer">
 						<form class="Question" id="goto" action="">
-							<label class="Question__label" for="name">¿Eres deportista profesional y/o federado en <span class="sport">[Deporte seleccionado]</span>?</label>
+							<label class="Question__label" for="name">¿Parcticas <span class="sport">[este deporte] </span> como profesional/federado?</label>
 							<ul class="RadioButtonList">
 								<li>
 									<input type="radio" value="athlete" name="radioinfo" class="optionRequired"/>
@@ -65,9 +65,9 @@
 							</ul>
 						</form>
 						<footer>
-							<button class="Button Button__back" type="button" onclick="goBack()"><</button>
+							<button class="Button Button__back" type="button" onclick="goBack()">←</button>
 							<div>Pregunta 5 de 7</div>
-							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
+							<button class="Button Button__next" id="sendButton" form="goto" type="submit">→</button>
 							<script>
 								function goBack() {
 									window.history.back();
