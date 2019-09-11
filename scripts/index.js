@@ -3,10 +3,8 @@
  * - All our useful JS goes here, awesome!
  */
 
-
-
 $(document).ready(function () {
-  
+
   console.log("JavaScript is amazing!");
 
   $('[data-element="carousel"]').slick({
@@ -21,7 +19,7 @@ $(document).ready(function () {
   });
 
   $('.toggle-card').on('click', function(e) {
-    $('.Card--optional').toggleClass("hidden"); //you can list several class names 
+    $('.Card--optional').toggleClass("hidden"); //you can list several class names
     $(this).text(function(i, text){
       return text === "Ver opción básica" ? "Ocultar opción básica" : "Ver opción básica";
     })

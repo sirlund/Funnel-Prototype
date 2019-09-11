@@ -19,13 +19,20 @@
 				</header>
 				<div class="InnerContainer">
 					<div class="QuestionContainer">
-						<form class="Question" method="GET" action="question-02.html">
+						<form class="Question" id="goto" action="question-02.html">
 							<label class="Question__label" for="name">¿Cómo te llamas?</label>
 							<input class="Question__input inputRequired" name="name" value="" type="text" placeholder="Ingresa tu nombre">
-							<div class="Question__button">
-								<button id="sendButton" class="Button" type="submit">Siguiente</button>
-							</div>
 						</form>
+						<footer>
+							<button class="Button Button__back" type="button" onclick="goBack()"><</button>
+							<div>Pregunta 1 de 7</div>
+							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
+							<script>
+								function goBack() {
+									window.history.back();
+								};
+							</script>
+						</footer>
 					</div>
 				</div>
 			</div>

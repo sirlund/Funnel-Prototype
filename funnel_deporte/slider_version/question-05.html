@@ -63,10 +63,17 @@
 									<label for="a50">No</label>
 								</li>
 							</ul>
-							<div class="Question__button">
-								<button id="sendButton" class="Button" type="submit">Siguiente</button>
-							</div>
 						</form>
+						<footer>
+							<button class="Button Button__back" type="button" onclick="goBack()"><</button>
+							<div>Pregunta 5 de 7</div>
+							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
+							<script>
+								function goBack() {
+									window.history.back();
+								};
+							</script>
+						</footer>
 					</div>
 				</div>
 			</div>
