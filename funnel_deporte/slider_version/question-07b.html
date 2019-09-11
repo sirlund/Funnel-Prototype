@@ -21,6 +21,7 @@
 					<div class="QuestionContainer">
 						<form class="Question" id="goto" action="recommendation.html">
 							<label class="Question__label" for="name">¿Qué días de la semana?</label>
+							<span>Selecciona los días que practicas este deporte</span>
 							<ul class="RadioButtonList RadioButtonList--horizontal">
 								<li>
 									<input type="checkbox" value="Mon" name="radioinfo" class="optionRequired"/>
@@ -53,9 +54,9 @@
 							</ul>
 						</form>
 						<footer>
-							<button class="Button Button__back" type="button" onclick="goBack()">←</button>
+							<button class="Button Button__back" type="button" onclick="goBack()"><</button>
 							<div>Pregunta 7 de 7</div>
-							<button class="Button Button__next" id="sendButton" form="goto" type="submit">→</button>
+							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
 							<script>
 								function goBack() {
 									window.history.back();

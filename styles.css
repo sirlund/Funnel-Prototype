@@ -1,35 +1,17 @@
-:root {
-  --teal-050: #effcf6;
-  --teal-100: #c6f7e2;
-  --teal-200: #8eedc7;
-  --teal-300: #65d6ad;
-  --teal-400: #3ebd93;
-  --teal-500: #27ab83;
-  --teal-600: #199473;
-  --teal-700: #147d64;
-  --teal-800: #0c6b58;
-  --teal-900: #014d40;
-  --blue-grey-050: #f0f4f8;
-  --blue-grey-100: #d9e2ec;
-  --blue-grey-200: #bcccdc;
-  --blue-grey-300: #9fb3c8;
-  --blue-grey-400: #829ab1;
-  --blue-grey-500: #627d98;
-  --blue-grey-600: #486581;
-  --blue-grey-700: #334e68;
-  --blue-grey-800: #243b53;
-  --blue-grey-900: #102a43; }
+.calendarContainer {
+  text-align: left;
+  margin: 1rem 2rem 0; }
 
 .calendar {
   max-width: max-content;
-  margin: 3em auto 0 auto;
+  margin: 1rem auto;
   padding: 1.5em;
   background-color: #fff;
-  border: 2px solid var(--blue-grey-200);
+  border: 2px solid #e2e2e2;
   border-radius: 8px; }
 
 .month-indicator {
-  color: var(--blue-grey-700);
+  color: #19d1d0;
   text-align: center;
   font-weight: 500; }
 
@@ -43,7 +25,7 @@
 
 .day-of-week > * {
   font-size: 0.7em;
-  color: var(--blue-grey-400);
+  color: #a2a2a2;
   font-weight: 500;
   letter-spacing: 0.1em;
   font-variant: small-caps;
@@ -55,7 +37,7 @@
 
 /* Positioning the first day */
 .date-grid button:first-child {
-  grid-column: 6; }
+  grid-column: 7; }
 
 .date-grid button {
   position: relative;
@@ -64,18 +46,19 @@
   height: 4.5ch;
   border-radius: 50%;
   background-color: transparent;
-  color: var(--blue-grey-600); }
+  color: #4a4a4a;
+  margin: 0.125rem; }
 
 .date-grid button:hover,
 .date-grid button:focus {
   outline: none;
-  background-color: var(--blue-grey-050);
-  color: var(--blue-grey-700); }
+  background-color: #bff7f7;
+  color: #094848; }
 
 .date-grid button:active,
 .date-grid button.is-selected {
-  background-color: var(--teal-100);
-  color: var(--teal-900); }
+  background-color: #19d1d0;
+  color: white; }
 
 * {
   margin: 0;
@@ -273,7 +256,8 @@ header {
       text-transform: lowercase; }
   .Question span {
     line-height: 1.3;
-    font-size: 1em; }
+    font-size: .875em;
+    margin-bottom: .5rem; }
   .Question__input {
     border: 2px solid #c8c8c8;
     border-radius: 4px;
@@ -412,11 +396,28 @@ footer {
   align-items: center;
   background: #262626;
   color: white; }
+  footer div {
+    flex-grow: 1;
+    padding: 0 .5rem; }
   footer .Button {
     height: 40px;
     width: 40px;
     padding: .5rem;
-    font-size: 20px; }
+    font-size: 20px;
+    line-height: 1; }
+  footer.price .Button__next {
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 16px; }
+  footer.price div {
+    text-align: left; }
+  footer.price .clp {
+    font-size: 22px;
+    font-weight: 700; }
+  footer.price .uf {
+    font-size: 12px;
+    opacity: .5; }
 
 /*///////////////////////// MARGINS /////////////////////////*/
 /* margin 0.25rem */
