@@ -59,6 +59,10 @@ header {
 	justify-content: flex-start;
 	flex: 1 1 auto;
 	overflow: auto;
+	padding-bottom: 4rem;
+	&.no-footer {
+		padding-bottom: 0;
+	}
 }
 
 .Total {
@@ -208,7 +212,7 @@ header {
 	align-items: stretch;
 	justify-content: center;
 	flex: 1 0 auto;
-	padding: 3rem 0 4rem;
+	padding: 3rem 0 0;
 }
 
 .Question {

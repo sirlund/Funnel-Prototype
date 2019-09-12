@@ -48,14 +48,14 @@
   background-color: transparent;
   color: #4a4a4a;
   margin: 0.125rem; }
+  @media only screen and (max-width: 480px) {
+    .date-grid button {
+      font-size: 3vw; } }
 
 .date-grid button:hover,
 .date-grid button:focus {
-  outline: none;
-  background-color: #bff7f7;
-  color: #094848; }
+  outline: none; }
 
-.date-grid button:active,
 .date-grid button.is-selected {
   background-color: #19d1d0;
   color: white; }
@@ -112,7 +112,10 @@ header {
   align-items: stretch;
   justify-content: flex-start;
   flex: 1 1 auto;
-  overflow: auto; }
+  overflow: auto;
+  padding-bottom: 4rem; }
+  .InnerContainer.no-footer {
+    padding-bottom: 0; }
 
 .Total {
   margin: 1.5rem 0 0;
@@ -234,7 +237,7 @@ header {
   align-items: stretch;
   justify-content: center;
   flex: 1 0 auto;
-  padding: 3rem 0 4rem; }
+  padding: 3rem 0 0; }
 
 .Question {
   width: 100%;
