@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   //add change listener to all inputs with name account
-  $("[name='radioinfo']").change(function() {
+  $(":radio").change(function() {
     //get current radio button value
     var ch = $(this).val();
     var act = "";

@@ -9,37 +9,6 @@
 		<!--  Styles  -->
 		<link rel="stylesheet" href="../../styles.css">
 		<link rel="stylesheet" href="../../sport_theme.css">
-		<script>
-			function getParameterByName(name) {
-				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-					results = regex.exec(location.search);
-				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-			}
-
-			var sport = getParameterByName('radioinfo');
-			var sport_emoji = sport;
-			// if (sport == "Surf") {
-			// 	sport_emoji = "🏄‍♂️";
-			// } else if (sport == "Buceo") {
-			// 	sport_emoji = "🥽";
-			// } else if (sport == "Bodyboard") {
-			// 	sport_emoji = "🏄‍♀️";
-			// } else if (sport == "Ciclismo") {
-			// 	sport_emoji = "🚴‍♂️";
-			// } else if (sport == "Ski") {
-			// 	sport_emoji = "⛷";
-			// } else if (sport == "Motociclismo") {
-			// 	sport_emoji = "🏍";
-			// } else if (sport == "Fútbol") {
-			// 	sport_emoji = "⚽️";
-			// }
-
-			document.addEventListener("DOMContentLoaded", function(event) {
-				document.getElementsByClassName("sport")[0].innerHTML = sport_emoji;
-			});
-
-		</script>
 	</head>
 	<body>
 		<div class="Container">
@@ -52,14 +21,14 @@
 				<div class="InnerContainer">
 					<div class="QuestionContainer">
 						<form class="Question" id="goto" action="">
-							<label class="Question__label" for="name">¿Parcticas <span class="sport">[este deporte] </span> como profesional/federado?</label>
+							<label class="Question__label" for="name">¿Practicas <span class="mideporte">[este deporte] </span> como profesional/federado?</label>
 							<ul class="RadioButtonList">
 								<li>
-									<input type="radio" value="athlete" name="radioinfo" class="optionRequired"/>
+									<input type="radio" value="athlete" name="sportProfile" class="optionRequired"/>
 									<label for="a25">Si</label>
 								</li>
 								<li>
-									<input type="radio" value="amateur" name="radioinfo" class="optionRequired"/>
+									<input type="radio" value="amateur" name="sportProfile" class="optionRequired"/>
 									<label for="a50">No</label>
 								</li>
 							</ul>
@@ -82,5 +51,16 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="../../scripts/nextSwitch.js"></script>
 		<script src="../../scripts/sendButton.js"></script>
+		<script src="../../scripts/store.js"></script>
+		<script>
+			// store sport
+			var sport = getParameterByName('sportSelected');
+			localStorage.setItem("sport", sport);
+			var getSport = localStorage.getItem('sport');
+			$(document).ready(function(){ 
+				$(".mideporte").text(getSport);
+			});
+
+		</script>
 	</body>
 </html>

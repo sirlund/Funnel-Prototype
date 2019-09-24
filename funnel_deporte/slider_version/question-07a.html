@@ -20,8 +20,8 @@
 				<div class="InnerContainer">
 					<div class="QuestionContainer">
 						<form class="Question" id="goto" action="recommendation.html">
-							<label class="Question__label" for="name">¿Por cuántos días?</label>
-							<input class="Question__input inputRequired" type="number" pattern="\d*" placeholder="Ingresa una cantidad de días">
+							<label class="Question__label" for="daysSelected">¿Por cuántos días?</label>
+							<input class="Question__input inputRequired" name="daysSelected" type="number" pattern="\d*" placeholder="Ingresa una cantidad de días">
 							<small class="mt-2">Máximo 30 días continuos.</small>
 						</form>
 						<footer>
@@ -41,5 +41,7 @@
 		<!-- Scripts -->
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script src="../../scripts/sendButton.js"></script>
+		<script src="../../scripts/store.js"></script>
+		
 	</body>
 </html>

@@ -20,7 +20,7 @@
 				</header>
 				<div class="InnerContainer">
 					<div class="Total">
-						<h3>Seguro para [mi deporte]</h3>
+						<h3>Seguro para <span class="mideporte">[mi deporte]</span></h3>
 					</div>
 					<!-- Cards Slider -->
 					<div class="Slider Slider--Cards" data-element="carousel">
@@ -51,5 +51,13 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 		<script type="text/javascript" src="../../scripts/index.js"></script>
+		<script src="../../scripts/store.js"></script>
+		<script>
+			// store days
+			var days = getParameterByName('daysSelected');
+			localStorage.setItem("days", days);
+			console.log(localStorage.getItem('days'));
+			$(".mideporte").text( localStorage.getItem('sport') + " por " + localStorage.getItem('days') + " días");
+		</script>
 	</body>
 </html>
