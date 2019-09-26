@@ -55,7 +55,16 @@
 		<script>
 			// store days
 			var days = getParameterByName('daysSelected');
+			var weekDays = getParameterByName('weekday');
+
+			var searchParams = new URLSearchParams(location.search);
+			console.log(searchParams.getAll('weekday'));
+			//Iterate the search parameters.
+			for (let p of searchParams) {
+				console.log(p);
+			}
 			localStorage.setItem("days", days);
+			localStorage.setItem("weekDays", weekDays);
 			console.log(localStorage.getItem('days'));
 			$(".mideporte").text( localStorage.getItem('sport') + " por " + localStorage.getItem('days') + " días");
 		</script>
