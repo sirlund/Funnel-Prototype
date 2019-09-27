@@ -6,6 +6,7 @@
 		<title>Recomendación</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<!--  Styles  -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
 		<link rel="stylesheet" href="../../styles.css">
 		<link rel="stylesheet" href="../../sport_theme.css">
@@ -20,23 +21,53 @@
 				</header>
 				<div class="InnerContainer">
 					<div class="Total">
-						<h3>Seguro para <span class="mideporte">[mi deporte]</span></h3>
+						<h3>Seguro para <span class="mySport">[mySport]</span></h3>
 					</div>
 					<!-- Cards Slider -->
 					<div class="Slider Slider--Cards" data-element="carousel">
 						<div class="Card">
 							<div class="Card__tag">Más ajustado a ti</div>
 							<div class="Card__desc">
-								<img src="../../img/inner_deporte_ajustado.png"/>
+								<!-- <img src="../../img/inner_deporte_ajustado.png"/> -->
+								<div class="daysCovered daysCovered__base">[daysCovered]</div>
+								<div class="price">
+									<h1 class="priceAmount priceAmount__base">[priceAmount]</h1>
+									<div class="priceDetails priceDetails__base">[priceDetails]</div>
+								</div>
+								<div class="coverageDetails">
+									<div class="mb-3">Reembolso de gastos médicos para todas las lesiones.</div>
+									<h6>Además incluye:</h6>
+									<div class="coverageList d-flex justify-content-center">
+										<div class="coverageList__item">icon</div>
+										<div class="coverageList__item">icon</div>
+									</div>
+									<small class="text-muted">Cobertura entregada por Consorcio</small>
+								</div>
+
 							</div>
 							<div class="Card__footer">
-									<a href="edit.html" class="Button">Configurar este seguro</a>
+								<a href="edit.html" class="Button">Configurar este seguro</a>
 							</div>
 						</div>
-						<div class="Card">
+						<div class="Card secondCard">
 							<div class="Card__tag">Más conveniente</div>
 							<div class="Card__desc">
-								<img src="../../img/inner_deporte_conveniente.png"/>
+								<!-- <img src="../../img/inner_deporte_ajustado.png"/> -->
+								<div class="daysCovered daysCovered__alt">30 días asegurado por</div>
+								<div class="price">
+									<h1 class="priceAmount priceAmount__alt">27,000</h1>
+									<div class="priceDetails priceDetails__alt">$900 por día</div>
+								</div>
+								<div class="coverageDetails">
+									<div class="mb-3">Reembolso de gastos médicos para todas las lesiones.</div>
+									<h6>Además incluye:</h6>
+									<div class="coverageList d-flex justify-content-center">
+										<div class="coverageList__item">icon</div>
+										<div class="coverageList__item">icon</div>
+									</div>
+									<small class="text-muted">Cobertura entregada por Consorcio</small>
+								</div>
+
 							</div>
 							<div class="Card__footer">
 								<a href="edit.html" class="Button">Configurar este seguro</a>
@@ -44,35 +75,181 @@
 						</div>
 					</div>
 
+					<div class="mt-3 text-center">
+						<button type="button" onclick="goBack()">Volver</button>
+						<script>
+							function goBack() {
+								window.history.back();
+							};
+						</script>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="../../scripts/index.js"></script>
 		<script src="../../scripts/store.js"></script>
 		<script>
-			// store days
-			var days = getParameterByName('daysSelected');
-			var weekDays = getParameterByName('weekday');
+			// set vars
+			let pricePerDay;
+			var sportSelected = sessionStorage.getItem('sport');
 
-			var searchParams = new URLSearchParams(location.search);
-			var weekDaysLength = searchParams.getAll('weekday').length;
-			console.log(searchParams.getAll('weekday'));
+			// getdays
+			let days = getParameterByName('daysSelected');
+			// store in local
+			sessionStorage.setItem("days", days);
+			
+			// get selected week days
+			let searchParams = new URLSearchParams(location.search);
+			let weekDays = searchParams.getAll('weekday');
+			let weekDaysLength = searchParams.getAll('weekday').length;
+			sessionStorage.setItem("weekDays", weekDays);
+			sessionStorage.setItem("weekDaysLength", weekDaysLength);
 			//Iterate the search parameters.
 			for (let p of searchParams) {
 				console.log(p);
 			}
-			localStorage.setItem("days", days);
-			localStorage.setItem("weekDays", weekDays);
-			console.log(localStorage.getItem('days'));
-			if (days) {
-				$(".mideporte").text( localStorage.getItem('sport') + " por " + localStorage.getItem('days') + " días");
-			} else if (weekDays) {
-				$(".mideporte").text( localStorage.getItem('sport') + " por " + weekDaysLength + " días");
+			
+
+			// Apply multipliers
+			// Motociclismo
+			// Ciclismo
+			// Running
+			// Trekking
+			// Fútbol
+			// Tenis
+			// Zumba
+			// Spinning
+			// Pilates
+			// Crossfit
+			// Entrenamiento con pesos
+			// Otros indoor similares
+			// Snowboard
+			// Ski
+			// Surf
+			// Buceo
+			// Bodyboard
+			// Paracaidísmo
+			// Parapente
+
+			console.log("sport selected: " + sportSelected)
+			if (sportSelected == "Motociclismo") {
+				pricePerDay = 4900;
+			}
+			if (sportSelected == "Ciclismo") {
+				pricePerDay = 3700;
+			}
+			if (sportSelected == "Running") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Trekking") {
+				pricePerDay = 3900;
+			}
+			if (sportSelected == "Fútbol") {
+				pricePerDay = 3700;
+			}
+			if (sportSelected == "Tenis") {
+				pricePerDay = 2900;
+			}
+			if (sportSelected == "Zumba") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Spinning") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Pilates") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Crossfit") {
+				pricePerDay = 2500			
+			}
+			if (sportSelected == "Entrenamiento con pesos") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Otros indoor similares") {
+				pricePerDay = 2500;
+			}
+			if (sportSelected == "Snowboard") {
+				pricePerDay = 4900;
+			}
+			if (sportSelected == "Ski") {
+				pricePerDay = 4900;
+			}
+			if (sportSelected == "Buceo") {
+				pricePerDay = 3700;
+			}
+			if (sportSelected == "Surf") {
+				pricePerDay = 3700;
+			}
+			if (sportSelected == "Bodyboard") {
+				pricePerDay = 3700;
+			}
+			if (sportSelected == "Paracaidísmo") {
+				pricePerDay = 4700;
+			}
+			if (sportSelected == "Parapente") {
+				pricePerDay = 4700;
 			}
 
+
+			//  Multiply per Day & Print week/single days values
+			if (days) {
+				var totalDays = days;
+				console.log("total days: " + totalDays);
+			} else if (weekDays) {
+				var totalDays = weekDaysLength*4;
+				console.log("weekdays: " + weekDays);
+				console.log("weekdayslength: " + weekDaysLength);
+				console.log("total days: " + totalDays);
+			}
+
+			console.log("total days: " + totalDays);
+			if (totalDays > 1) {
+				$(".daysCovered__base").text(totalDays + " días asegurado por" );
+			} else {
+				$(".daysCovered__base").text(totalDays + " día asegurado por" );
+			}
+
+			
+
+			// get total price
+			if (totalDays > 1 && totalDays < 4) {
+				var discount = 0.85;
+				console.log("discount " + discount);
+			} else if (totalDays >= 4 && totalDays <= 7) {
+				var discount = 0.75;
+				console.log("discount " + discount);
+			} else if (totalDays >= 8 && totalDays <= 14) {
+				var discount = 0.50;
+				console.log("discount " + discount);
+			} else if (totalDays >= 15 && totalDays <= 30) {
+				var discount = 0.30;
+				console.log("discount " + discount);
+			} else {
+				console.log("no discount");
+			}
+			pricePerDay = Math.round(pricePerDay*discount);
+			var totalPrice = pricePerDay*totalDays;
+
+			pricePerDayAlt = Math.round(pricePerDay*0.3);
+			var totalPriceAlt = pricePerDayAlt*30;
+
+			// print priceAmount
+			$(".priceAmount__base").text(totalPrice.toLocaleString());
+			$(".priceAmount__alt").text(totalPriceAlt.toLocaleString());
+			// print priceDetails 
+			$(".priceDetails__base").text("$" + pricePerDay + " por día");
+			$(".priceDetails__alt").text("$" + pricePerDayAlt + " por día");
+			// print sport selected 
+			$(".mySport").text(sportSelected);
+
+			if (totalDays >= 28) {
+				$(".secondCard").remove();
+			}
 		</script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 	</body>
 </html>

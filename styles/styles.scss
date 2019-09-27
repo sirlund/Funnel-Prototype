@@ -157,6 +157,48 @@ header {
 	margin: 1rem 0 0;
 }
 
+// Card sub elements
+.daysCovered {
+	line-height: 1;
+	font-weight: 600;
+}
+.price {
+	
+	&Amount {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 3rem;
+		font-weight: 700;
+		line-height: 1;
+		margin: .5rem 0 0;
+		&:before {
+			content: "$";
+			font-size: .5em;
+			opacity: .5;
+		}
+	}
+	&Details {
+		color: $grey-light;
+	}
+}
+.coverageDetails {
+	line-height: 1.3333;
+	margin: 1rem 0;
+}
+.coverageList {
+	margin: .25rem 0;
+	&__item {
+		text-indent: -9999px;
+		width: 36px;
+		height: 36px;
+		border-radius: 36px;
+		background-color: $grey-light;
+		opacity: .5;
+		margin: 0 .25rem;
+	}
+}
+
 .Button {
 	border: none;
 	background: $blue;

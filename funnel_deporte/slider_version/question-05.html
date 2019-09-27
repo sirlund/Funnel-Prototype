@@ -55,8 +55,8 @@
 		<script>
 			// store sport
 			var sport = getParameterByName('sportSelected');
-			localStorage.setItem("sport", sport);
-			var getSport = localStorage.getItem('sport');
+			sessionStorage.setItem("sport", sport);
+			var getSport = sessionStorage.getItem('sport');
 			$(document).ready(function(){ 
 				$(".mideporte").text(getSport);
 			});
