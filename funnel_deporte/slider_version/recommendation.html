@@ -216,15 +216,18 @@
 
 			// get total price
 			if (totalDays > 1 && totalDays < 4) {
-				var discount = 0.85;
+				var discount = 0.80;
 				console.log("discount " + discount);
 			} else if (totalDays >= 4 && totalDays <= 7) {
 				var discount = 0.75;
 				console.log("discount " + discount);
-			} else if (totalDays >= 8 && totalDays <= 14) {
-				var discount = 0.50;
+			} else if (totalDays >= 8 && totalDays <= 12) {
+				var discount = 0.60;
 				console.log("discount " + discount);
-			} else if (totalDays >= 15 && totalDays <= 30) {
+			} else if (totalDays >= 13 && totalDays <= 18) {
+				var discount = 0.45;
+				console.log("discount " + discount);
+			} else if (totalDays >= 19 && totalDays <= 30) {
 				var discount = 0.30;
 				console.log("discount " + discount);
 			} else {
