@@ -58,6 +58,7 @@
 			var weekDays = getParameterByName('weekday');
 
 			var searchParams = new URLSearchParams(location.search);
+			var weekDaysLength = searchParams.getAll('weekday').length;
 			console.log(searchParams.getAll('weekday'));
 			//Iterate the search parameters.
 			for (let p of searchParams) {
@@ -66,7 +67,12 @@
 			localStorage.setItem("days", days);
 			localStorage.setItem("weekDays", weekDays);
 			console.log(localStorage.getItem('days'));
-			$(".mideporte").text( localStorage.getItem('sport') + " por " + localStorage.getItem('days') + " días");
+			if (days) {
+				$(".mideporte").text( localStorage.getItem('sport') + " por " + localStorage.getItem('days') + " días");
+			} else if (weekDays) {
+				$(".mideporte").text( localStorage.getItem('sport') + " por " + weekDaysLength + " días");
+			}
+
 		</script>
 	</body>
 </html>
