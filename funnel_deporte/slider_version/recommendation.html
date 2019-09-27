@@ -230,11 +230,13 @@
 			} else {
 				console.log("no discount");
 			}
-			pricePerDay = Math.round(pricePerDay*discount);
-			var totalPrice = pricePerDay*totalDays;
 
 			pricePerDayAlt = Math.round(pricePerDay*0.3);
 			var totalPriceAlt = pricePerDayAlt*30;
+
+			pricePerDay = Math.round(pricePerDay*discount);
+			var totalPrice = pricePerDay*totalDays;
+			
 
 			// print priceAmount
 			$(".priceAmount__base").text(totalPrice.toLocaleString());
