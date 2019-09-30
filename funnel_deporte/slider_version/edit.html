@@ -85,6 +85,20 @@
                             <div class="my-3">
                                 <h4>Coberturas</h4>
                                 <p>Eventos que cubre tu seguro.</p>
+                                <ul>
+                                    <li>
+                                        <h6>Reembolso de gastos médicos</h6>
+                                        <small class="text-muted">Incluido en el seguro</small>
+                                    </li>
+                                    <li>
+                                        <h6>Muerte accidental</h6>
+                                        <small class="text-muted">Incluido en el seguro</small>
+                                    </li>
+                                    <li>
+                                        <h6>Invalidez Total y Permanente ⅔ (ITP ⅔)</h6>
+                                        <small class="text-muted">Incluido en el seguro</small>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -188,6 +202,7 @@
             sessionStorage.setItem("finalPrice", price);
             var ufValue = Math.round(price/28000 * 100) / 100;
             $(".uf_value").text(ufValue);
+            sessionStorage.setItem("totalDays", numDays);
         </script>
 	</body>
 </html>
