@@ -863,3 +863,9 @@ footer {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem; }
+
+.dateSelected li {
+  margin: .25rem 0 !important; }
+
+.dateSelected li:empty {
+  display: none; }

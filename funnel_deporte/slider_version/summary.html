@@ -24,8 +24,15 @@
                         <small class="pt-1 text-black-50 d-flex justify-content-center">Cobertura entregada por CONSORCIO</small>
                         <hr>
                         <h5 class="mt-3">Resumen de tu seguro</h5>
-                        <h6 class="my-3">Seguro para Sport para el día:</h6>
-                        <p>Lunes 9 de septiembre</p>
+                        <h6 class="my-3 firstLine"></h6>
+                        <div class="dateSelected">
+                            <ul>
+                                <li class="singleDay"></li>
+                                <li class="startDay"></li>
+                                <li class="endDay"></li>
+                                <li class="weekdaysText"></li>
+                            </ul>
+                        </div>
                         <hr>
                         <h6>Coberturas</h6>
                         <ul>
@@ -93,6 +100,19 @@
             $(".finalPrice").text(formatearNumero(finalPrice));
             var ufValue = Math.round(finalPrice/28000 * 100) / 100;
             $(".uf_value").text(ufValue);
+            var totalDays = sessionStorage.totalDays;
+            var weekDaysLength = sessionStorage.weekDaysLength;
+            if (totalDays > 1) {
+                $(".firstLine").text("Seguro de " + sessionStorage.sport + " para " + totalDays + " días:");
+                $(".startDay").text("Desde: Martes 2 de Octubre");
+                $(".endDay").text("Hasta: Viernes 5 de Octubre");
+            } else if (totalDays < 1) {
+                $(".firstLine").text("Seguro de " + sessionStorage.sport + " para 1 día:");
+                $(".singleDay").text("Martes 2 de septiembre");
+            } else if (weekDaysLength) {
+                $(".weekdaysText").text("Todos los Lunes y Viernes");
+            }
+           
         </script>
 	</body>
 </html>

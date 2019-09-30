@@ -538,3 +538,14 @@ footer {
   }
 }
 @include padding-classes;
+
+
+
+.dateSelected {
+	li {
+		margin: .25rem 0 !important;
+	}
+	li:empty {
+		display: none;
+	}
+}
