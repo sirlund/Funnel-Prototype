@@ -24,6 +24,9 @@ body {
 h1 {
 	margin: 1rem auto;
 }
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+}
 
 header {
 	background: $black;
@@ -481,25 +484,26 @@ footer {
 		div {
 			text-align: left;
 		}
-		.clp {
-			font-size: 22px;
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
-			font-weight: 700;
-			line-height: 1;
-			margin: .5rem 0 0;
-			&:before {
-				content: "$";
-				font-size: .8em;
-				opacity: .5;
-			}
-		}
-		.uf {
-			font-size: 12px;
-			opacity: .5;
-		}
 	}
+}
+
+.clp {
+	font-size: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	font-weight: 700;
+	line-height: 1;
+	margin: .5rem 0 0;
+	&:before {
+		content: "$";
+		font-size: .8em;
+		opacity: .5;
+	}
+}
+.uf {
+	font-size: 12px;
+	opacity: .5;
 }
 
 @mixin margin-classes {

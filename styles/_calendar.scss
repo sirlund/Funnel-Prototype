@@ -3,6 +3,13 @@
   .calendarContainer {
     text-align: left;
     margin: 1rem 1.5rem 0;
+    ul {
+      margin: 1rem;
+      color: lighten($grey, 10%);
+      li {
+        margin: 1rem 0;
+      }
+    }
   }
   .calendar {
     max-width: max-content;

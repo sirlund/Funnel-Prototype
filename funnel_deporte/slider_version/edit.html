@@ -21,6 +21,7 @@
 				<div class="InnerContainer">
 					<small class="pt-6 text-black-50">Cobertura entregada por CONSORCIO</small>
 					<div class="calendarContainer">
+                        <form id="goto" action="exclusions.html"></form>
                         <div class="my-3">
                             <h5>Días del seguro</h5>
                             <small class="text-muted">Puedes modificar los días de tu seguro.</small>
@@ -109,65 +110,84 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script>
-            $(document).ready(function () {
-                var days = sessionStorage.days;
-                var weekDays = sessionStorage.weekDays;
-                var pricePerDay = sessionStorage.pricePerDay;
-                var d = new Date();
-                var today = d.getDate();
-                console.log("days: " + days);
-                console.log("today: " + today);
-                if (days) {
-                    var strno = 2, endno = strno - 1 + Number(days); // 0 based index
-                    $('.day:gt(' + (strno -1) + '):lt(' + (endno - strno + 1) + ')').addClass('is-selected');
-                    // $('.day:gt(1):lt(days)').addClass('is-selected');
-                } else if (weekDays) {
-                    $(".day:eq(7)").addClass("is-selected");
-                    $(".day:eq(14)").addClass("is-selected");
-                    $(".day:eq(21)").addClass("is-selected");
-                    $(".day:eq(28)").addClass("is-selected");
-                    $(".day:eq(4)").addClass("is-selected");
-                    $(".day:eq(11)").addClass("is-selected");
-                    $(".day:eq(18)").addClass("is-selected");
-                    $(".day:eq(25)").addClass("is-selected");
+            function formatearNumero(nStr) {
+                nStr += '';
+                x = nStr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? ',' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + '.' + '$2');
                 }
+                return x1 + x2;
+            }
+            var days = sessionStorage.days;
+            var weekDays = sessionStorage.weekDays;
+            var pricePerDay = sessionStorage.pricePerDay;
+            var d = new Date();
+            var today = d.getDate();
+            console.log("days: " + days);
+            console.log("today: " + today);
+            if (days) {
+                var strno = 2, endno = strno - 1 + Number(days); // 0 based index
+                $('.day:gt(' + (strno -1) + '):lt(' + (endno - strno + 1) + ')').addClass('is-selected');
+                // $('.day:gt(1):lt(days)').addClass('is-selected');
+            } else if (weekDays) {
+                $(".day:eq(7)").addClass("is-selected");
+                $(".day:eq(14)").addClass("is-selected");
+                $(".day:eq(21)").addClass("is-selected");
+                $(".day:eq(28)").addClass("is-selected");
+                $(".day:eq(4)").addClass("is-selected");
+                $(".day:eq(11)").addClass("is-selected");
+                $(".day:eq(18)").addClass("is-selected");
+                $(".day:eq(25)").addClass("is-selected");
+            }
+            $(document).ready(function () {
                 $('.day').on('click', function(e) {
                     $(this).toggleClass("is-selected");
                     var numDays = $('.is-selected').length;
                     // apply discount
                     var discount = 1;
-                    if (numDays > 1 && numDays < 4) {
-                        var discount = 0.80;
+                    if (numDays == 2) {
+                        var discount = 0.73;
                         console.log("discount " + discount);
-                    } else if (numDays >= 4 && numDays <= 7) {
-                        var discount = 0.75;
+                    } else if (numDays == 3) {
+                        var discount = 0.58;
                         console.log("discount " + discount);
-                    } else if (numDays >= 8 && numDays <= 13) {
-                        var discount = 0.60;
+                    } else if (numDays == 4) {
+                        var discount = 0.49;
                         console.log("discount " + discount);
-                    } else if (numDays >= 14 && numDays <= 19) {
-                        var discount = 0.45;
+                    } else if (numDays == 5) {
+                        var discount = 0.43;
                         console.log("discount " + discount);
-                    } else if (numDays >= 20 && numDays <= 31) {
-                        var discount = 0.25;
+                    } else if (numDays == 6) {
+                        var discount = 0.38;
+                        console.log("discount " + discount);
+                    } else if (numDays >= 7 && numDays <= 9) {
+                        var discount = 0.35;
+                        console.log("discount " + discount);
+                    } else if (numDays >= 10) {
+                        var discount = 0.15;
                         console.log("discount " + discount);
                     } else {
                         console.log("no discount");
                     }
-                    var price = pricePerDay*numDays*discount;
-                    $(".clp").text(price.toLocaleString());
+                    var price = pricePerDay*numDays;
+                    $(".clp").text(formatearNumero(price));
+                    sessionStorage.setItem("finalPrice", price);
+                    console.log("updated price: " + formatearNumero(price));
+                    var ufValue = Math.round(price/28000 * 100) / 100;
+                    $(".uf_value").text(ufValue);
                     e.preventDefault();
                 });
-
-                var numDays = $('.is-selected').length;
-                var price = pricePerDay*numDays;
-                $(".clp").text(price.toLocaleString());
-
-
-
-                console.log(price);
-
+                
             });
+            var numDays = $('.is-selected').length;
+            var price = pricePerDay*numDays;
+            $(".clp").text(formatearNumero(price));
+            sessionStorage.setItem("finalPrice", price);
+            var ufValue = Math.round(price/28000 * 100) / 100;
+            $(".uf_value").text(ufValue);
         </script>
 	</body>
 </html>

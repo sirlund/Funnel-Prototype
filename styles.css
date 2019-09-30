@@ -1,6 +1,11 @@
 .calendarContainer {
   text-align: left;
   margin: 1rem 1.5rem 0; }
+  .calendarContainer ul {
+    margin: 1rem;
+    color: #646464; }
+    .calendarContainer ul li {
+      margin: 1rem 0; }
 
 .calendar {
   max-width: max-content;
@@ -82,6 +87,9 @@ body {
 
 h1 {
   margin: 1rem auto; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700; }
 
 header {
   background: #262626;
@@ -452,21 +460,23 @@ footer {
     font-size: 16px; }
   footer.price div {
     text-align: left; }
-  footer.price .clp {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-weight: 700;
-    line-height: 1;
-    margin: .5rem 0 0; }
-    footer.price .clp:before {
-      content: "$";
-      font-size: .8em;
-      opacity: .5; }
-  footer.price .uf {
-    font-size: 12px;
+
+.clp {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: 700;
+  line-height: 1;
+  margin: .5rem 0 0; }
+  .clp:before {
+    content: "$";
+    font-size: .8em;
     opacity: .5; }
+
+.uf {
+  font-size: 12px;
+  opacity: .5; }
 
 /*///////////////////////// MARGINS /////////////////////////*/
 /* margin 0.25rem */

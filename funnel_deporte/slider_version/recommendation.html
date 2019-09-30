@@ -92,6 +92,17 @@
 		<script type="text/javascript" src="../../scripts/index.js"></script>
 		<script src="../../scripts/store.js"></script>
 		<script>
+			function formatearNumero(nStr) {
+                nStr += '';
+                x = nStr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? ',' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + '.' + '$2');
+                }
+                return x1 + x2;
+            }
 			// set vars
 			let pricePerDay;
 			var sportSelected = sessionStorage.sport;
@@ -214,26 +225,32 @@
 
 			var discount = 1;
 			// get total price
-			if (totalDays > 1 && totalDays < 4) {
-				var discount = 0.80;
+			if (totalDays == 2) {
+				var discount = 0.73;
 				console.log("discount " + discount);
-			} else if (totalDays >= 4 && totalDays <= 7) {
-				var discount = 0.75;
+			} else if (totalDays == 3) {
+				var discount = 0.58;
 				console.log("discount " + discount);
-			} else if (totalDays >= 8 && totalDays <= 13) {
-				var discount = 0.60;
+			} else if (totalDays == 4) {
+				var discount = 0.49;
 				console.log("discount " + discount);
-			} else if (totalDays >= 14 && totalDays <= 19) {
-				var discount = 0.45;
+			} else if (totalDays == 5) {
+				var discount = 0.43;
 				console.log("discount " + discount);
-			} else if (totalDays >= 20 && totalDays <= 30) {
-				var discount = 0.25;
+			} else if (totalDays == 6) {
+				var discount = 0.38;
+				console.log("discount " + discount);
+			} else if (totalDays >= 7 && totalDays <=9) {
+				var discount = 0.35;
+				console.log("discount " + discount);
+			} else if (totalDays >= 10) {
+				var discount = 0.15;
 				console.log("discount " + discount);
 			} else {
 				console.log("no discount");
 			}
 
-			pricePerDayAlt = Math.round(pricePerDay*0.25);
+			pricePerDayAlt = Math.round(pricePerDay*0.13);
 			var totalPriceAlt = pricePerDayAlt*30;
 			sessionStorage.setItem("pricePerDayAlt", pricePerDayAlt);
 
@@ -243,11 +260,11 @@
 
 
 			// print priceAmount
-			$(".priceAmount__base").text(totalPrice.toLocaleString());
-			$(".priceAmount__alt").text(totalPriceAlt.toLocaleString());
+			$(".priceAmount__base").text(formatearNumero(totalPrice));
+			$(".priceAmount__alt").text(formatearNumero(totalPriceAlt));
 			// print priceDetails
-			$(".priceDetails__base").text("$" + pricePerDay + " por día");
-			$(".priceDetails__alt").text("$" + pricePerDayAlt + " por día");
+			$(".priceDetails__base").text("$" + formatearNumero(pricePerDay) + " por día");
+			$(".priceDetails__alt").text("$" + formatearNumero(pricePerDayAlt) + " por día");
 			// print sport selected
 			$(".mySport").text(sportSelected);
 
