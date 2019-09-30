@@ -2,12 +2,12 @@
 
   .calendarContainer {
     text-align: left;
-    margin: 1rem 2rem 0;
-  } 
+    margin: 1rem 1.5rem 0;
+  }
   .calendar {
     max-width: max-content;
     margin: 1rem auto;
-    padding: 1.5em;
+    padding: .5em;
     background-color: #fff;
     border: 2px solid lighten($grey-light, 25%);
     border-radius: 8px;
@@ -48,21 +48,24 @@
 
   /* Positioning the first day */
   .date-grid button:first-child {
-    grid-column: 7;
+    grid-column: 1;
   }
 
   // Style for each day
   .date-grid button {
     position: relative;
     border: 0;
-    width: 4.5ch;
-    height: 4.5ch;
+    width: 5.5ch;
+    height: 5.5ch;
     border-radius: 50%;
     background-color: transparent;
     color: $grey;
     margin: 0.125rem;
     @media only screen and (max-width: 480px) {
-      font-size: 3vw;
+      font-size: 3.2vw;
+    }
+    &.day-muted {
+      color: lighten($grey, 50%);
     }
   }
 

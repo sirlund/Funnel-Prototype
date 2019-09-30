@@ -1,11 +1,11 @@
 .calendarContainer {
   text-align: left;
-  margin: 1rem 2rem 0; }
+  margin: 1rem 1.5rem 0; }
 
 .calendar {
   max-width: max-content;
   margin: 1rem auto;
-  padding: 1.5em;
+  padding: .5em;
   background-color: #fff;
   border: 2px solid #e2e2e2;
   border-radius: 8px; }
@@ -37,20 +37,22 @@
 
 /* Positioning the first day */
 .date-grid button:first-child {
-  grid-column: 7; }
+  grid-column: 1; }
 
 .date-grid button {
   position: relative;
   border: 0;
-  width: 4.5ch;
-  height: 4.5ch;
+  width: 5.5ch;
+  height: 5.5ch;
   border-radius: 50%;
   background-color: transparent;
   color: #4a4a4a;
   margin: 0.125rem; }
   @media only screen and (max-width: 480px) {
     .date-grid button {
-      font-size: 3vw; } }
+      font-size: 3.2vw; } }
+  .date-grid button.day-muted {
+    color: #cacaca; }
 
 .date-grid button:hover,
 .date-grid button:focus {
@@ -452,7 +454,16 @@ footer {
     text-align: left; }
   footer.price .clp {
     font-size: 22px;
-    font-weight: 700; }
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 700;
+    line-height: 1;
+    margin: .5rem 0 0; }
+    footer.price .clp:before {
+      content: "$";
+      font-size: .8em;
+      opacity: .5; }
   footer.price .uf {
     font-size: 12px;
     opacity: .5; }

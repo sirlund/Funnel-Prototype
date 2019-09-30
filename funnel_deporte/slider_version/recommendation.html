@@ -94,17 +94,18 @@
 		<script>
 			// set vars
 			let pricePerDay;
-			var sportSelected = sessionStorage.getItem('sport');
+			var sportSelected = sessionStorage.sport;
 
 			// getdays
 			let days = getParameterByName('daysSelected');
-			// store in local
+			// store
 			sessionStorage.setItem("days", days);
 
 			// get selected week days
 			let searchParams = new URLSearchParams(location.search);
 			let weekDays = searchParams.getAll('weekday');
 			let weekDaysLength = searchParams.getAll('weekday').length;
+			// store
 			sessionStorage.setItem("weekDays", weekDays);
 			sessionStorage.setItem("weekDaysLength", weekDaysLength);
 			//Iterate the search parameters.
@@ -232,11 +233,13 @@
 				console.log("no discount");
 			}
 
-			pricePerDayAlt = Math.round(pricePerDay*0.3);
+			pricePerDayAlt = Math.round(pricePerDay*0.25);
 			var totalPriceAlt = pricePerDayAlt*30;
+			sessionStorage.setItem("pricePerDayAlt", pricePerDayAlt);
 
 			pricePerDay = Math.round(pricePerDay*discount);
 			var totalPrice = pricePerDay*totalDays;
+			sessionStorage.setItem("pricePerDay", pricePerDay);
 
 
 			// print priceAmount
@@ -251,6 +254,7 @@
 			if (totalDays >= 28) {
 				$(".secondCard").remove();
 			}
+
 		</script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>

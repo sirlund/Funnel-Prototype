@@ -163,7 +163,7 @@ header {
 	font-weight: 600;
 }
 .price {
-	
+
 	&Amount {
 		display: flex;
 		align-items: center;
@@ -483,7 +483,17 @@ footer {
 		}
 		.clp {
 			font-size: 22px;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
 			font-weight: 700;
+			line-height: 1;
+			margin: .5rem 0 0;
+			&:before {
+				content: "$";
+				font-size: .8em;
+				opacity: .5;
+			}
 		}
 		.uf {
 			font-size: 12px;
