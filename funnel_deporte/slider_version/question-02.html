@@ -21,7 +21,7 @@
 					<div class="QuestionContainer">
 						<form class="Question" id="goto" action="question-03.html">
 							<label class="Question__label" for="age">¿Cuántos años tienes?</label>
-							<input class="Question__input inputRequired" type="number" name="age" value="" pattern="\d*" placeholder="Ingresa tu edad">
+							<input class="Question__input inputRequired" type="number" name="age" value="" min="18" max="65" pattern="\d*" placeholder="Ingresa tu edad">
 						</form>
 						<footer>
 							<button class="Button Button__back" type="button" onclick="goBack()"><</button>
@@ -29,7 +29,7 @@
 							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
 							<script>
 								function goBack() {
-									window.history.back();
+									history.back();
 								};
 							</script>
 						</footer>

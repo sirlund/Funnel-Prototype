@@ -79,7 +79,7 @@
 						<button type="button" onclick="goBack()">Volver</button>
 						<script>
 							function goBack() {
-								window.history.back();
+								history.back();
 							};
 						</script>
 					</div>
@@ -100,7 +100,7 @@
 			let days = getParameterByName('daysSelected');
 			// store in local
 			sessionStorage.setItem("days", days);
-			
+
 			// get selected week days
 			let searchParams = new URLSearchParams(location.search);
 			let weekDays = searchParams.getAll('weekday');
@@ -111,7 +111,7 @@
 			for (let p of searchParams) {
 				console.log(p);
 			}
-			
+
 
 			// Apply multipliers
 			// Motociclismo
@@ -163,7 +163,7 @@
 				pricePerDay = 2500;
 			}
 			if (sportSelected == "Crossfit") {
-				pricePerDay = 2500			
+				pricePerDay = 2500
 			}
 			if (sportSelected == "Entrenamiento con pesos") {
 				pricePerDay = 2500;
@@ -205,17 +205,16 @@
 				console.log("total days: " + totalDays);
 			}
 
-			console.log("total days: " + totalDays);
 			if (totalDays > 1) {
 				$(".daysCovered__base").text(totalDays + " días asegurado por" );
 			} else {
 				$(".daysCovered__base").text(totalDays + " día asegurado por" );
 			}
 
-			
+
 
 			// get total price
-			if (totalDays > 1 && totalDays < 4) {
+			if (totalDays >= 1 && totalDays < 4) {
 				var discount = 0.80;
 				console.log("discount " + discount);
 			} else if (totalDays >= 4 && totalDays <= 7) {
@@ -239,15 +238,15 @@
 
 			pricePerDay = Math.round(pricePerDay*discount);
 			var totalPrice = pricePerDay*totalDays;
-			
+
 
 			// print priceAmount
 			$(".priceAmount__base").text(totalPrice.toLocaleString());
 			$(".priceAmount__alt").text(totalPriceAlt.toLocaleString());
-			// print priceDetails 
+			// print priceDetails
 			$(".priceDetails__base").text("$" + pricePerDay + " por día");
 			$(".priceDetails__alt").text("$" + pricePerDayAlt + " por día");
-			// print sport selected 
+			// print sport selected
 			$(".mySport").text(sportSelected);
 
 			if (totalDays >= 28) {

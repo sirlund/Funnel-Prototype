@@ -39,7 +39,7 @@
 							<button class="Button Button__next" id="sendButton" form="goto" type="submit">></button>
 							<script>
 								function goBack() {
-									window.history.back();
+									history.back();
 								};
 							</script>
 						</footer>
@@ -57,7 +57,7 @@
 			var sport = getParameterByName('sportSelected');
 			sessionStorage.setItem("sport", sport);
 			var getSport = sessionStorage.getItem('sport');
-			$(document).ready(function(){ 
+			$(document).ready(function(){
 				$(".mideporte").text(getSport);
 			});
 
