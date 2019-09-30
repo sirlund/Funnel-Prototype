@@ -211,10 +211,9 @@
 				$(".daysCovered__base").text(totalDays + " día asegurado por" );
 			}
 
-
-
+			var discount = 1;
 			// get total price
-			if (totalDays >= 1 && totalDays < 4) {
+			if (totalDays > 1 && totalDays < 4) {
 				var discount = 0.80;
 				console.log("discount " + discount);
 			} else if (totalDays >= 4 && totalDays <= 7) {
