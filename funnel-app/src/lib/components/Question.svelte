@@ -1,5 +1,9 @@
 <script>
 	import { page } from '$app/stores';
+	import { getSportIconComponent } from './sportIcons.js';
+	import { IconArrowLeft, IconArrowRight } from '@tabler/icons-svelte';
+	import { fade, fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
 	export let question;
 	export let value = '';
@@ -8,6 +12,7 @@
 	export let onBack = () => {};
 
 	let isValid = false;
+	let direction = 1; // 1 for forward, -1 for backward
 
 	// Check if this is a sport funnel for theme
 	$: isSportFunnel = $page.params.funnel === 'deporte';
@@ -28,8 +33,14 @@
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (isValid) {
+			direction = 1;
 			onAnswer(value);
 		}
+	}
+
+	function handleBack() {
+		direction = -1;
+		onBack();
 	}
 
 	function handleCheckboxChange(optionValue, checked) {
@@ -67,7 +78,13 @@
 		<!-- Inner Container -->
 		<div class="inner-container">
 			<div class="question-wrapper">
-				<form class="question-form" on:submit={handleSubmit}>
+				<form
+					class="question-form"
+					on:submit={handleSubmit}
+					in:fly={{ x: direction * 300, duration: 400, easing: quintOut }}
+					out:fly={{ x: direction * -300, duration: 300, easing: quintOut }}
+				>
+					<span class="question-number">{question.step}→</span>
 					<label class="question-label" for={question.id}>
 						{question.label}
 					</label>
@@ -90,6 +107,7 @@
 								{#each question.categories as category}
 									<h4>{category.name}</h4>
 									{#each category.sports as sport}
+										{@const IconComponent = getSportIconComponent(sport)}
 										<li>
 											<input
 												type="radio"
@@ -98,7 +116,12 @@
 												value={sport}
 												bind:group={value}
 											/>
-											<label for="{question.id}-{sport}">{sport}</label>
+											<label for="{question.id}-{sport}">
+												<span class="option-icon">
+													<IconComponent size={24} stroke={2} />
+												</span>
+												<span>{sport}</span>
+											</label>
 										</li>
 									{/each}
 								{/each}
@@ -149,8 +172,8 @@
 		<!-- Fixed Footer -->
 		<footer class="mobile-footer">
 			{#if canGoBack}
-				<button type="button" on:click={onBack} class="btn-mobile {isSportFunnel ? 'btn-sport' : ''}">
-					&lt;
+				<button type="button" on:click={handleBack} class="btn-mobile {isSportFunnel ? 'btn-sport' : ''}">
+					<IconArrowLeft size={24} stroke={2.5} />
 				</button>
 			{:else}
 				<div style="width: 40px;"></div>
@@ -166,7 +189,7 @@
 				on:click={handleSubmit}
 				class="btn-mobile {isSportFunnel ? 'btn-sport' : ''}"
 			>
-				&gt;
+				<IconArrowRight size={24} stroke={2.5} />
 			</button>
 		</footer>
 	</div>

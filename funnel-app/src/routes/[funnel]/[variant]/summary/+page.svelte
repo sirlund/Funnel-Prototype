@@ -3,6 +3,8 @@
 	import { funnelStore } from '$lib/stores/funnel.js';
 	import { formatCurrency } from '$lib/config/pricing.js';
 	import { goto } from '$app/navigation';
+	import { fade, fly, scale } from 'svelte/transition';
+	import { quintOut, elasticOut } from 'svelte/easing';
 
 	$: funnelId = $page.params.funnel;
 	$: answers = $funnelStore.answers;
@@ -51,36 +53,37 @@
 
 				<!-- Summary Card -->
 				<div
-					style="background: white; border: 2px solid #e7e7e7; border-radius: 0.5rem; padding: 1.5rem; text-align: left; margin-bottom: 1.5rem;"
+					style="background: white; border: 2px solid var(--border-default); border-top: 4px solid {isSportFunnel ? 'var(--deporte-primary)' : 'var(--vida-primary)'}; border-radius: var(--radius-lg); padding: 1.5rem; text-align: left; margin-bottom: 1.5rem;"
+					in:fly={{ y: 30, duration: 500, delay: 200, easing: quintOut }}
 				>
 					<!-- User Info -->
-					<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e7e7e7;">
-						<h3 style="font-size: 0.75rem; text-transform: uppercase; color: #a2a2a2; font-weight: 600; margin-bottom: 0.75rem;">
+					<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-default);">
+						<h3 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 0.75rem; letter-spacing: 0.5px;">
 							Tus datos
 						</h3>
 						<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
 							<div>
-								<p style="font-size: 0.75rem; color: #6a6a6a; margin-bottom: 0.25rem;">Nombre</p>
-								<p style="font-weight: 600; color: #262626;">{answers.name || '-'}</p>
+								<p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Nombre</p>
+								<p style="font-weight: 600; color: var(--text-primary);">{answers.name || '-'}</p>
 							</div>
 							<div>
-								<p style="font-size: 0.75rem; color: #6a6a6a; margin-bottom: 0.25rem;">Edad</p>
-								<p style="font-weight: 600; color: #262626;">{answers.age || '-'}</p>
+								<p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Edad</p>
+								<p style="font-weight: 600; color: var(--text-primary);">{answers.age || '-'}</p>
 							</div>
 						</div>
 						<div style="margin-top: 1rem;">
-							<p style="font-size: 0.75rem; color: #6a6a6a; margin-bottom: 0.25rem;">Email</p>
-							<p style="font-weight: 600; color: #262626;">{answers.email || '-'}</p>
+							<p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Email</p>
+							<p style="font-weight: 600; color: var(--text-primary);">{answers.email || '-'}</p>
 						</div>
 					</div>
 
 					{#if answers.sport}
 						<!-- Sport Info -->
-						<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e7e7e7;">
-							<h3 style="font-size: 0.75rem; text-transform: uppercase; color: #a2a2a2; font-weight: 600; margin-bottom: 0.75rem;">
+						<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-default);">
+							<h3 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 0.75rem; letter-spacing: 0.5px;">
 								Deporte
 							</h3>
-							<p style="font-weight: 600; font-size: 1.125rem; color: #262626;">
+							<p style="font-weight: 600; font-size: 1.125rem; color: var(--text-primary);">
 								{answers.sport}
 							</p>
 						</div>
@@ -88,25 +91,25 @@
 
 					{#if planPricing}
 						<!-- Plan Info -->
-						<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #e7e7e7;">
-							<h3 style="font-size: 0.75rem; text-transform: uppercase; color: #a2a2a2; font-weight: 600; margin-bottom: 0.75rem;">
+						<div style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-default);">
+							<h3 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 0.75rem; letter-spacing: 0.5px;">
 								Plan seleccionado
 							</h3>
-							<p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 1rem; color: #262626;">
+							<p style="font-weight: 600; font-size: 1.125rem; margin-bottom: 1rem; color: var(--text-primary);">
 								{selectedPlan === 'base' ? 'Más ajustado a ti' : 'Más conveniente'}
 							</p>
 							<div
-								style="background: {isSportFunnel ? '#e0f7f7' : '#e3f2fd'}; border-radius: 0.5rem; padding: 1rem; text-align: center;"
+								style="background: {isSportFunnel ? 'var(--deporte-primary-light)' : 'var(--vida-primary-light)'}; border-radius: var(--radius-md); padding: 1rem; text-align: center;"
 							>
-								<p style="color: #6a6a6a; font-size: 0.875rem; margin-bottom: 0.25rem;">
+								<p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">
 									{planPricing.displayDays} asegurado por
 								</p>
 								<p
-									style="font-size: 2rem; font-weight: 700; color: {isSportFunnel ? '#19d1d0' : '#2ba4f9'}; margin: 0.25rem 0;"
+									style="font-size: 2rem; font-weight: 700; color: {isSportFunnel ? 'var(--deporte-primary)' : 'var(--vida-primary)'}; margin: 0.25rem 0;"
 								>
 									${formatCurrency(planPricing.totalPrice)}
 								</p>
-								<p style="font-size: 0.875rem; color: #a2a2a2;">
+								<p style="font-size: 0.875rem; color: var(--text-muted);">
 									${formatCurrency(planPricing.pricePerDay)} por día
 								</p>
 							</div>
@@ -117,7 +120,7 @@
 					<div
 						style="background: #e8f5e9; border: 2px solid #4caf50; border-radius: 0.5rem; padding: 1.5rem; text-align: center;"
 					>
-						<div style="margin-bottom: 1rem;">
+						<div style="margin-bottom: 1rem;" in:scale={{ duration: 600, delay: 600, easing: elasticOut, start: 0.5 }}>
 							<svg
 								style="width: 3rem; height: 3rem; color: #4caf50; margin: 0 auto;"
 								fill="currentColor"

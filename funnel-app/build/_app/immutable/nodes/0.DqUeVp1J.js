@@ -1,0 +1,1 @@
+import"../chunks/DsnmJJEf.js";import"../chunks/C6OcoRxq.js";import{f as s,a as i,c as m,r as e}from"../chunks/Dw_zBlVh.js";import{s as n}from"../chunks/CmG9hIkF.js";var p=s('<div class="min-h-screen"><!></div>');function v(r,a){var o=p(),t=m(o);n(t,a,"default",{}),e(o),i(r,o)}export{v as component};

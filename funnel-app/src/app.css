@@ -2,6 +2,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Sailec Font (fallback to Circular, then system fonts) */
+@import url('https://fonts.cdnfonts.com/css/circular-std');
+
 @layer base {
 	* {
 		margin: 0;
@@ -9,17 +12,51 @@
 		box-sizing: border-box;
 	}
 
+	:root {
+		/* Primary Colors - Klare Design System */
+		--vida-primary: #ff1f7d;
+		--vida-primary-dark: #e01b6f;
+		--vida-primary-light: #ffebf4;
+
+		--deporte-primary: #00d9e1;
+		--deporte-primary-dark: #00c4cb;
+		--deporte-primary-light: #e0fbfc;
+
+		/* Neutral Colors */
+		--text-primary: #262626;
+		--text-secondary: #6a6a6a;
+		--text-muted: #a2a2a2;
+		--border-default: #e7e7e7;
+		--background-light: #f8f9fa;
+		--white: #ffffff;
+
+		/* Spacing */
+		--spacing-xs: 0.5rem;
+		--spacing-sm: 0.75rem;
+		--spacing-md: 1rem;
+		--spacing-lg: 1.5rem;
+		--spacing-xl: 2rem;
+
+		/* Border Radius */
+		--radius-sm: 4px;
+		--radius-md: 8px;
+		--radius-lg: 12px;
+		--radius-xl: 16px;
+	}
+
 	html,
 	body {
 		height: 100%;
 		min-height: 100%;
-		font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
 		font-size: 16px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
 	body {
 		@apply bg-white text-gray-900;
-		color: #262626;
+		color: var(--text-primary);
 	}
 
 	h1,
@@ -71,42 +108,59 @@
 
 	/* Header */
 	.mobile-header {
-		@apply bg-gray-900;
+		background: var(--text-primary);
 		padding: 1rem;
 		height: 3.5rem;
 		width: 100%;
 		flex: 0 0 auto;
 	}
 
-	/* Buttons - Original Style */
+	/* Buttons - New Design */
 	.btn-mobile {
 		border: none;
-		background: #2ba4f9;
-		padding: 0.75em 1.5em;
-		height: 3rem;
+		background: var(--vida-primary);
+		padding: 0.875em 2em;
+		min-height: 3.5rem;
 		text-decoration: none;
-		border-radius: 1.5rem;
+		border-radius: 9999px;
 		display: inline-flex;
 		color: white;
 		font-size: 1rem;
+		font-weight: 600;
 		align-items: center;
 		justify-content: center;
-		transition: all 200ms ease;
-		font-weight: 500;
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.btn-mobile:hover:not(:disabled) {
+		background: var(--vida-primary-dark);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(255, 31, 125, 0.3);
+	}
+
+	.btn-mobile:active:not(:disabled) {
+		transform: translateY(0) scale(0.98);
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+		transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.btn-mobile:disabled {
 		background: #d5d5d5;
 		color: #a2a2a2;
+		cursor: not-allowed;
+		box-shadow: none;
 	}
 
 	/* Sport theme button */
-	.btn-sport {
-		background: #19d1d0;
+	.sport-theme .btn-mobile {
+		background: var(--deporte-primary);
 	}
 
-	.btn-sport:hover:not(:disabled) {
-		background: #15b8b7;
+	.sport-theme .btn-mobile:hover:not(:disabled) {
+		background: var(--deporte-primary-dark);
+		box-shadow: 0 4px 12px rgba(0, 217, 225, 0.3);
 	}
 
 	/* Question Container */
@@ -116,58 +170,95 @@
 		align-items: stretch;
 		justify-content: center;
 		flex: 1 0 auto;
-		padding: 3rem 0 0;
+		padding: var(--spacing-xl) 0 0;
 	}
 
 	.question-form {
 		width: 100%;
-		padding: 0 1.5rem 1.5rem;
+		padding: 0 var(--spacing-lg) var(--spacing-lg);
 		display: flex;
 		flex-direction: column;
 		text-align: left;
 		min-height: 50vh;
 	}
 
-	.question-label {
-		font-size: 1.25rem;
-		font-weight: bold;
-		line-height: 1.3;
-		margin: 0 0 0.75rem;
-		color: #262626;
+	/* Question Number - NEW */
+	.question-number {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--vida-primary);
+		margin-bottom: 0.25rem;
+		display: inline-block;
 	}
 
+	.sport-theme .question-number {
+		color: var(--deporte-primary);
+	}
+
+	.question-label {
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: 1.3;
+		margin: 0 0 0.5rem;
+		color: var(--text-primary);
+	}
+
+	.question-helper {
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		margin-bottom: var(--spacing-md);
+		line-height: 1.5;
+	}
+
+	/* Input Fields - Bottom Border Style */
 	.question-input {
-		border: 2px solid #c8c8c8;
-		border-radius: 4px;
+		border: none;
+		border-bottom: 2px solid var(--border-default);
+		border-radius: 0;
 		font-size: 1.125rem;
-		padding: 0.75rem 1.5rem;
+		padding: var(--spacing-md) 0;
 		width: 100%;
-		transition: border-color 200ms ease;
+		background: transparent;
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		font-weight: 400;
+	}
+
+	.question-input::placeholder {
+		color: var(--text-muted);
+		transition: opacity 250ms ease;
+	}
+
+	.question-input:focus::placeholder {
+		opacity: 0.5;
 	}
 
 	.question-input:focus {
-		border-color: #2ba4f9;
+		border-bottom-color: var(--vida-primary);
 		outline: none;
+		padding-left: 0.5rem;
+		border-bottom-width: 3px;
 	}
 
-	/* Sport theme input focus */
 	.sport-theme .question-input:focus {
-		border-color: #19d1d0;
+		border-bottom-color: var(--deporte-primary);
 	}
 
-	/* Radio Button List - Original Style */
+	/* Radio Button List - Card Style with Icons */
 	.radio-list {
 		list-style-type: none;
-		margin: 1rem 0 0;
+		margin: var(--spacing-md) 0 0;
 		padding: 0;
 		width: 100%;
 	}
 
 	.radio-list h4 {
-		margin: 1.5rem 0 0;
-		padding-bottom: 0.75rem;
-		font-size: 1rem;
-		color: #262626;
+		margin: var(--spacing-lg) 0 var(--spacing-sm);
+		padding-bottom: 0;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		color: var(--text-secondary);
 	}
 
 	.radio-list h4:first-of-type {
@@ -177,16 +268,12 @@
 	.radio-list li {
 		width: 100%;
 		position: relative;
-	}
-
-	.radio-list li:not(:first-child) {
-		margin: 2vw 0 0;
+		margin-bottom: var(--spacing-sm);
 	}
 
 	.radio-list input[type='radio'],
 	.radio-list input[type='checkbox'] {
-		opacity: 0.011;
-		z-index: 100;
+		opacity: 0;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -195,134 +282,223 @@
 		width: 100%;
 		height: 100%;
 		cursor: pointer;
+		z-index: 100;
 	}
 
 	.radio-list label {
-		padding: 0.75rem 1.25rem;
+		padding: var(--spacing-md) var(--spacing-lg);
 		min-height: 3.5rem;
-		background-color: #e7e7e7;
-		color: #6a6a6a;
+		background-color: white;
+		color: var(--text-primary);
 		cursor: pointer;
-		z-index: 90;
-		border-radius: 0.25rem;
+		border: 2px solid var(--border-default);
+		border-radius: var(--radius-md);
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		font-size: 1em;
+		gap: 0.75rem;
+		font-size: 1rem;
+		font-weight: 500;
 		line-height: 1.25em;
-		transition: all 200ms ease;
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	}
+
+	.option-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		opacity: 0.6;
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.radio-list input:checked + label .option-icon {
+		opacity: 1;
+		transform: scale(1.1);
 	}
 
 	.radio-list label:hover {
-		background: #ddd;
+		border-color: var(--text-muted);
+		background: var(--background-light);
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.radio-list label:active {
+		transform: scale(0.99);
+		transition: all 100ms cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	.radio-list input[type='radio']:checked + label,
 	.radio-list input[type='checkbox']:checked + label {
-		background: #2ba4f9;
-		color: white;
-		border-color: transparent;
+		border-color: var(--vida-primary);
+		background: var(--vida-primary-light);
+		color: var(--vida-primary);
+		font-weight: 600;
+		box-shadow: 0 2px 8px rgba(255, 31, 125, 0.15);
+		transform: translateY(0);
 	}
 
 	/* Sport theme radio */
 	.sport-theme .radio-list input[type='radio']:checked + label,
 	.sport-theme .radio-list input[type='checkbox']:checked + label {
-		background: #19d1d0;
+		border-color: var(--deporte-primary);
+		background: var(--deporte-primary-light);
+		color: var(--deporte-primary);
+		box-shadow: 0 2px 8px rgba(0, 217, 225, 0.15);
 	}
 
-	/* Footer Navigation - Original Style */
+	/* Checkmark icon for selected items */
+	.radio-list input:checked + label::after {
+		content: '✓';
+		position: absolute;
+		right: var(--spacing-md);
+		font-weight: 700;
+		font-size: 1.25rem;
+	}
+
+	/* Footer Navigation */
 	.mobile-footer {
 		position: fixed;
 		z-index: 9999;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		padding: 0.75rem 1rem;
+		padding: var(--spacing-sm) var(--spacing-md);
 		height: 4rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background: #262626;
+		background: var(--text-primary);
 		color: white;
 	}
 
 	.mobile-footer .progress-text {
 		flex-grow: 1;
-		padding: 0 0.5rem;
+		padding: 0 var(--spacing-sm);
 		text-align: center;
+		font-size: 0.875rem;
+		font-weight: 500;
 	}
 
 	.mobile-footer .btn-mobile {
-		height: 40px;
-		width: 40px;
-		padding: 0.5rem;
+		height: 44px;
+		min-height: 44px;
+		width: 44px;
+		padding: 0;
 		font-size: 20px;
 		line-height: 1;
+		border-radius: 9999px;
 	}
 
-	/* Cards - Original Style */
+	/* Cards - New Design with Top Border */
 	.product-card {
 		position: relative;
-		border: 0.125rem solid #2ba4f9;
-		padding: 1.5rem 1.5rem 1.5rem;
-		border-radius: 0.5rem;
+		background: white;
+		border: 2px solid var(--border-default);
+		border-top: 4px solid var(--vida-primary);
+		padding: var(--spacing-xl);
+		border-radius: var(--radius-lg);
 		margin: 3rem 0 0;
 		width: 100%;
-		transition: all 300ms ease;
-		background: white;
+		transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+	}
+
+	.product-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 	}
 
 	.sport-theme .product-card {
-		border-color: #19d1d0;
+		border-top-color: var(--deporte-primary);
 	}
 
 	.card-tag {
-		color: #a2a2a2;
+		color: var(--vida-primary);
 		position: absolute;
 		width: 100%;
-		top: -3rem;
+		top: -2.5rem;
 		left: 0;
-		font-size: 16px;
-		line-height: 3rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		line-height: 2.5rem;
 		text-align: center;
 	}
 
 	.sport-theme .card-tag {
-		color: #19d1d0;
+		color: var(--deporte-primary);
 	}
 
+	/* Price Display - New Design */
 	.price-amount {
 		display: flex;
-		align-items: center;
+		align-items: baseline;
 		justify-content: center;
-		font-size: 3rem;
+		font-size: 4rem;
 		font-weight: 700;
 		line-height: 1;
-		margin: 0.5rem 0 0;
+		margin: var(--spacing-sm) 0;
+		color: var(--text-primary);
 	}
 
 	.price-amount:before {
 		content: '$';
-		font-size: 0.5em;
-		opacity: 0.5;
+		font-size: 2rem;
+		opacity: 0.6;
+		margin-right: 0.25rem;
+	}
+
+	.price-suffix {
+		font-size: 1rem;
+		color: var(--text-muted);
+		margin-left: 0.5rem;
+		font-weight: 400;
 	}
 
 	.price-details {
-		color: #a2a2a2;
+		color: var(--text-muted);
 		text-align: center;
+		font-size: 0.875rem;
 	}
 
 	/* Landing page cards */
 	.landing-card {
 		background: white;
-		border-radius: 0.5rem;
-		padding: 1.5rem;
-		border: 2px solid #e7e7e7;
-		transition: all 200ms ease;
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		border: 2px solid var(--border-default);
+		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 	}
 
 	.landing-card:hover {
-		border-color: #2ba4f9;
-		box-shadow: 0 4px 12px rgba(43, 164, 249, 0.15);
+		border-color: var(--vida-primary);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	}
+
+	.sport-theme.landing-card:hover {
+		border-color: var(--deporte-primary);
+	}
+
+	/* Helper/Info boxes */
+	.info-box {
+		background: var(--vida-primary-light);
+		border: 1px solid var(--vida-primary);
+		border-radius: var(--radius-md);
+		padding: var(--spacing-md);
+		margin: var(--spacing-md) 0;
+		font-size: 0.875rem;
+		color: var(--text-primary);
+	}
+
+	.sport-theme .info-box {
+		background: var(--deporte-primary-light);
+		border-color: var(--deporte-primary);
 	}
 }

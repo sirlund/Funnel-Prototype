@@ -2,6 +2,7 @@
 	import { funnels } from '$lib/config/funnels.js';
 	import { funnelStore } from '$lib/stores/funnel.js';
 	import { goto } from '$app/navigation';
+	import { IconArrowRight } from '@tabler/icons-svelte';
 
 	function selectFunnel(funnelId, variant) {
 		funnelStore.setFunnel(funnelId, variant);
@@ -42,7 +43,7 @@
 			<!-- Funnels -->
 			<div style="margin-top: 2rem;">
 				{#each Object.values(funnels) as funnel}
-					<div class="landing-card" style="margin-bottom: 1.5rem;">
+					<div class="landing-card {funnel.id === 'deporte' ? 'sport-theme' : ''}" style="margin-bottom: 1.5rem;">
 						<h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #262626;">
 							{funnel.name}
 						</h2>
@@ -54,10 +55,11 @@
 							{#each funnel.variants as variant}
 								<button
 									class="btn-mobile"
-									style="width: 100%; text-transform: capitalize;"
+									style="width: 100%; text-transform: capitalize; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"
 									on:click={() => selectFunnel(funnel.id, variant)}
 								>
-									Versión {variant}
+									<span>Versión {variant}</span>
+									<IconArrowRight size={20} stroke={2.5} />
 								</button>
 							{/each}
 						</div>

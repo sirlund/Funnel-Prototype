@@ -3,6 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { funnelStore } from '$lib/stores/funnel.js';
 	import { formatCurrency } from '$lib/config/pricing.js';
+	import { fade, fly } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 
 	$: funnelId = $page.params.funnel;
 	$: variant = $page.params.variant;
@@ -46,7 +48,11 @@
 
 		<!-- Inner Container -->
 		<div class="inner-container">
-			<div class="text-center" style="margin: 1.5rem 0 0;">
+			<div
+				class="text-center"
+				style="margin: 1.5rem 0 0;"
+				in:fade={{ duration: 400, delay: 200 }}
+			>
 				<h3 class="text-lg font-normal" style="color: #262626;">
 					Seguro para <span class="font-bold">{sport || 'tu deporte'}</span>
 				</h3>
@@ -55,7 +61,10 @@
 			{#if pricing}
 				<div style="padding: 0 1.5rem 1.5rem;">
 					<!-- Base Plan -->
-					<div class="product-card">
+					<div
+						class="product-card"
+						in:fly={{ y: 50, duration: 500, delay: 300, easing: quintOut }}
+					>
 						<div class="card-tag">Más ajustado a ti</div>
 
 						<div class="text-center">
@@ -97,7 +106,10 @@
 
 					<!-- Alternative Plan (only show if applicable) -->
 					{#if pricing.showAlternative}
-						<div class="product-card">
+						<div
+							class="product-card"
+							in:fly={{ y: 50, duration: 500, delay: 500, easing: quintOut }}
+						>
 							<div class="card-tag">Más conveniente</div>
 
 							<div class="text-center">
