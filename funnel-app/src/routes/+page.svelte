@@ -11,41 +11,66 @@
 
 <svelte:head>
 	<title>Klare Prototypes - Selecciona tu seguro</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+		rel="stylesheet"
+	/>
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
-	<div class="max-w-4xl w-full">
-		<header class="text-center mb-12">
-			<div class="mb-6">
-				<h1 class="text-5xl font-bold text-primary mb-2">Klare</h1>
+<div class="mobile-container">
+	<div class="mobile-view">
+		<div class="inner-container" style="padding: 1.5rem; max-width: 480px; margin: 0 auto;">
+			<!-- Logo -->
+			<div style="text-align: center; padding: 2rem 0 1rem;">
+				<svg
+					width="100"
+					height="40"
+					viewBox="0 0 50 20"
+					xmlns="http://www.w3.org/2000/svg"
+					style="margin: 0 auto;"
+				>
+					<path
+						d="M21.442 13.283c-1.787.367-1.79 1.503-1.79 1.924 0 .79.4 2.116 3.071 2.116 1.757 0 3.07-1.197 3.07-2.267v-1.478c.001 0-1.671-.949-4.35-.295zm6.658 6.122h-2.306v-1.342c-1.188 1.635-3.768 1.497-4.078 1.474-2.685-.322-4.368-1.948-4.368-4.326 0-2.704 2.01-4.312 5.375-4.312 1.261 0 2.268.14 3.071.423v-.812c.052-1.57-.565-2.015-.769-2.163-1.29-.931-4.104-.262-4.988.045l-.772-2.14a13.512 13.512 0 0 1 2.482-.565c1.965-.252 3.523.025 4.635.824.822.591 1.786 1.774 1.716 4.056l.002 8.838zm-17.558-.014L5.744 11.2l4.423-3.942-1.545-1.684-6.317 5.629V.154H0V19.41h2.305v-5.147l1.691-1.508 3.885 6.632 2.661.003zm33.23-11.596c1.6 0 2.696.6 3.348 1.835.155.297.278.61.368.934h-7.544c.455-1.428 1.495-2.77 3.797-2.77h.03zm4.052 6.888c-1.048 1.87-2.415 2.794-4.064 2.74h-.123c-1.183 0-2.08-.325-2.742-.99-1.081-1.098-1.251-2.835-1.277-3.439H50l-.014-1.154a7.396 7.396 0 0 0-.779-3.015c-.73-1.436-2.266-3.147-5.439-3.147-1.612 0-2.755.492-3.437.906-2.38 1.448-2.954 4.126-3.017 6.117-.005.131-.086 3.255 1.919 5.297 1.103 1.125 2.586 1.694 4.403 1.694h.254c2.425 0 4.533-1.383 5.953-3.915l-2.019-1.094zM37.692 5.782l-.234-.04c-2.269-.356-4.082-.01-5.242.998-.999.868-1.48 2.154-1.428 3.823v8.84h2.304V10.51c-.031-.968.187-1.663.65-2.065.592-.514 1.71-.685 3.163-.485l.787-2.177zM15.238.154h-2.305v19.25h2.305V.155zm-14.062 0h.046-.046z"
+						fill="#262626"
+					/>
+				</svg>
+				<h1 style="font-size: 1.5rem; font-weight: 700; margin-top: 1rem; color: #262626;">
+					Prototipos v1
+				</h1>
 			</div>
-			<h2 class="text-3xl font-bold text-gray-900 mb-3">Prototipos de Seguros</h2>
-			<p class="text-gray-600">Selecciona el tipo de seguro que quieres probar</p>
-		</header>
 
-		<div class="grid md:grid-cols-2 gap-6">
-			{#each Object.values(funnels) as funnel}
-				<div class="card hover:shadow-xl transition-shadow">
-					<h2 class="text-2xl font-bold mb-2">{funnel.name}</h2>
-					<p class="text-gray-600 mb-6">{funnel.description}</p>
+			<!-- Funnels -->
+			<div style="margin-top: 2rem;">
+				{#each Object.values(funnels) as funnel}
+					<div class="landing-card" style="margin-bottom: 1.5rem;">
+						<h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #262626;">
+							{funnel.name}
+						</h2>
+						<p style="color: #6a6a6a; margin-bottom: 1.5rem; font-size: 0.875rem;">
+							{funnel.description}
+						</p>
 
-					<div class="space-y-3">
-						<h3 class="text-sm font-semibold text-gray-500 uppercase">Selecciona variante:</h3>
-						{#each funnel.variants as variant}
-							<button
-								class="btn btn-primary w-full capitalize"
-								on:click={() => selectFunnel(funnel.id, variant)}
-							>
-								Versión {variant}
-							</button>
-						{/each}
+						<div style="display: flex; flex-direction: column; gap: 0.5rem;">
+							{#each funnel.variants as variant}
+								<button
+									class="btn-mobile"
+									style="width: 100%; text-transform: capitalize;"
+									on:click={() => selectFunnel(funnel.id, variant)}
+								>
+									Versión {variant}
+								</button>
+							{/each}
+						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
+				{/each}
+			</div>
 
-		<footer class="text-center mt-12 text-sm text-gray-500">
-			<p>Prototipos para pruebas de usuario - Klare v1</p>
-		</footer>
+			<!-- Footer -->
+			<div style="text-align: center; margin-top: 3rem; padding: 1rem;">
+				<p style="font-size: 0.75rem; color: #a2a2a2;">
+					Prototipos para pruebas de usuario - Klare
+				</p>
+			</div>
+		</div>
 	</div>
 </div>
